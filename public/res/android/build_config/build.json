@@ -1,0 +1,28 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "./key.jks",
+      "storePassword": "testtest",
+      "alias": "my_app",
+      "password": "testtest",
+      "keystoreType": "jks",
+      "packageType": "apk"
+    },
+    "release": {
+      "keystore": "./key.jks",
+      "storePassword": "testtest",
+      "alias": "my_app",
+      "password": "testtest",
+      "keystoreType": "jks",
+      "packageType": "apk"
+    },
+    "bundle": {
+      "keystore": "./key.jks",
+      "storePassword": "testtest",
+      "alias": "my_app",
+      "password": "testtest",
+      "keystoreType": "jks",
+      "packageType": "bundle"
+    }
+  }
+}

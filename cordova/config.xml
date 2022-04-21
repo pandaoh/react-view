@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.react.view" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>React-View</name>
+    <platform name="android">
+        <!-- <resource-file src="www/dist/res/values/styles.xml" target="/app/src/main/res/values/styles.xml" /> -->
+        <icon src="www/dist/res/android/icon/icon.png" />
+        <splash src="www/dist/res/android/splash/splash.jpg" />
+        <!-- 广告页相关 -->
+        <!-- <preference name="UIWebViewBounce" value="false" />
+        <preference name="DisallowOverscroll" value="true" /> -->
+        <!-- 强制横屏 -->
+        <!-- <preference name="Orientation" value="landscape" /> -->
+        <!-- 全屏 -->
+        <preference name="Fullscreen" value="true" />
+        <!-- 自动隐藏启动页面 -->
+        <preference name="AutoHideSplashScreen" value="true" /> 
+        <!-- 启动页面淡入 -->
+        <!-- <preference name="FadeSplashScreen" value="true" /> -->
+        <!-- 启动页面后延迟时间-开启会在启动页后闪过黑屏-最好使用代码主动关闭或者自动关闭 -->
+        <!-- <preference name="SplashScreenDelay" value="2000" /> -->
+        <!-- 启动页面淡出时间-开启会在启动页后闪过黑屏 -->
+        <!-- <preference name="FadeSplashScreenDuration" value="500" /> -->
+        <!-- 启动页面是否显示进度圈 -->
+        <preference name="ShowSplashScreenSpinner" value="false" />
+        <!-- <preference name="SplashScreenSpinnerColor" value="white" /> -->
+        <!-- 启动页面是否保持比例 -->
+        <preference name="SplashMaintainAspectRatio" value="true" />
+        <!-- 启动页面只在打开app时显示，后台进入时不显示。 -->
+        <preference name="SplashShowOnlyFirstTime" value="true" /> -->
+        <!-- <preference name="SplashScreenBackgroundColor" value="white" />  -->
+        <!-- <edit-config file="AndroidManifest.xml" target="/manifest/uses-sdk" mode="merge">
+            <uses-sdk android:minSdkVersion="21" android:maxSdkVersion="29" android:targetSdkVersion="26" />
+        </edit-config>  -->
+    </platform>
+    <description>React-View</description>
+    <author email="hxbpandaoh@163.com" href="https://a.biugle.cn">
+        Leo He
+    </author>
+    <content src="dist/index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

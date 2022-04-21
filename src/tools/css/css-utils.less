@@ -1,0 +1,10 @@
+@DESIGN_WIDTH: 1920;
+
+.rem(@prop, @px) {
+  @{prop}: unit((@px / @DESIGN_WIDTH * 100), rem);
+}
+
+@blue: #5a95ec;
+
+@font-family: Arial, 'Microsoft YaHei', PingFangSC-Regular, 'Hiragino Sans GB', 'Droid Sans Fallback',
+  'WenQuanYi Micro Hei', sans-serif;
