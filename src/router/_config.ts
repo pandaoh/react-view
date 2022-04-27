@@ -15,7 +15,7 @@ const routes = [
     name: 'Home',
     component: lazy(() => import('@pages/Home')),
     meta: {
-      title: '首页'
+      title: '首页',
     },
   },
   {
@@ -25,7 +25,7 @@ const routes = [
     exact: true,
     component: lazy(() => import('@pages/Home')),
     meta: {
-      title: 'test'
+      title: 'test',
     },
     // 若有子页面，此为参考
     routes: [
@@ -33,15 +33,15 @@ const routes = [
         path: '/test/:paramsName/demo1',
         name: 'TestDemo1',
         exact: true,
-        component: lazy(() => import('@pages/Settings'))
+        component: lazy(() => import('@pages/Settings')),
       },
       {
         path: '/test/:paramsName/demo2',
         name: 'TestDemo2',
         exact: true,
-        component: lazy(() => import('@pages/Settings'))
-      }
-    ]
+        component: lazy(() => import('@pages/Settings')),
+      },
+    ],
   },
   {
     path: '/settings',
@@ -49,7 +49,7 @@ const routes = [
     roles: ['admin'],
     component: lazy(() => import('@pages/Settings')),
     meta: {
-      title: '配置页面'
+      title: '配置页面',
     },
     exact: true,
   },
@@ -58,7 +58,7 @@ const routes = [
     name: 'Login',
     component: lazy(() => import('@pages/Login')),
     meta: {
-      title: '登录页面'
+      title: '登录页面',
     },
     exact: true,
   },
@@ -67,10 +67,10 @@ const routes = [
     name: '404',
     component: lazy(() => import('@pages/404')),
     meta: {
-      title: '404'
+      title: '404',
     },
-    exact: true
-  }
+    exact: true,
+  },
 ];
 
 export default routes;

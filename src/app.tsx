@@ -6,8 +6,8 @@
  * @Description: 主组件
  * @FilePath: \react-view\src\app.tsx
  */
-import React, {Component} from 'react';
-import {CLIENT_RATIO} from './global_config';
+import React, { Component } from 'react';
+import { CLIENT_RATIO } from './global_config';
 import AppRouter from './router';
 
 class App extends Component<any, {loading: boolean; clientRatio: number}> {
@@ -33,7 +33,7 @@ class App extends Component<any, {loading: boolean; clientRatio: number}> {
     // onload
     window.onload = () => {
       setTimeout(() => {
-        this.setState({loading: true});
+        this.setState({ loading: true });
       }, 1000);
 
       //   this.setState(
@@ -72,7 +72,7 @@ class App extends Component<any, {loading: boolean; clientRatio: number}> {
       return <AppRouter />;
     }
 
-    return <span style={{fontSize: '3rem', textAlign: 'center', color: 'yellow'}}>Loading...</span>;
+    return <span style={{ fontSize: '3rem', textAlign: 'center', color: 'yellow' }}>Loading...</span>;
   }
 }
 

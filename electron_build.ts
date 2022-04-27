@@ -2,12 +2,12 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-22 14:28:36
+ * @LastEditTime: 2022-04-27 14:56:30
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron_build.ts
  */
 // https://vitejs.cn/guide/env-and-mode.html#env-files
-import {app, BrowserWindow, globalShortcut} from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const path = require('path');
 

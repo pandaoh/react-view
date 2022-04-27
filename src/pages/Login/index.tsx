@@ -12,7 +12,7 @@ import React from 'react';
 const Login = () => {
   return (
     <div>
-      <div style={{fontSize: '5rem', textAlign: 'center'}}>登录</div>
+      <div style={{ fontSize: '5rem', textAlign: 'center' }}>登录</div>
       <hr />
       <Test linkList={['/', '/404', '/settings']} />
     </div>

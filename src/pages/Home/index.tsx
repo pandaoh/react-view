@@ -11,10 +11,10 @@ import './style.less';
 import Test from '@components/Test';
 
 const Home = (props: any) => {
-  console.log({props});
+  console.log({ props });
   return (
     <div className="home">
-      <div style={{fontSize: '5rem', textAlign: 'center'}}>首页</div>
+      <div style={{ fontSize: '5rem', textAlign: 'center' }}>首页</div>
       <hr />
       <Test linkList={['/settings', '/404']} />
     </div>

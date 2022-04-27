@@ -2,13 +2,13 @@
  * @Author: HxB
  * @Date: 2022-04-13 11:53:53
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-25 09:36:11
+ * @LastEditTime: 2022-04-27 14:58:34
  * @Description: 测试组件
  * @FilePath: \react-view\src\components\Test.tsx
  */
-import {Button, Row} from 'antd';
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import { Button, Row } from 'antd';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Test extends Component<any, any> {
   constructor(props: any) {
@@ -21,8 +21,8 @@ class Test extends Component<any, any> {
   goRouter = (path: string) => {
     this.props.history.push({
       pathname: path,
-      state: {name: 'state'},
-      query: {name: 'query'},
+      state: { name: 'state' },
+      query: { name: 'query' },
       search: 'name=search',
     });
   };
@@ -33,7 +33,7 @@ class Test extends Component<any, any> {
         {this.state.linkList.map((pathname: string, index: number) => (
           <Button
             key={index}
-            style={{margin: '10px'}}
+            style={{ margin: '10px' }}
             type="primary"
             ghost
             danger

@@ -7,7 +7,7 @@
  * @FilePath: \react-view\src\pages\404\index.tsx
  */
 import Test from '@components/Test';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class NotFound extends Component<any, any> {
   constructor(props: any) {
@@ -18,7 +18,7 @@ export default class NotFound extends Component<any, any> {
   render() {
     return (
       <div>
-        <div style={{fontSize: '5rem', textAlign: 'center'}}>404</div>
+        <div style={{ fontSize: '5rem', textAlign: 'center' }}>404</div>
         <hr />
         <Test linkList={['/', '/settings']} />
       </div>

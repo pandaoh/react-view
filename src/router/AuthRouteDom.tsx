@@ -2,12 +2,12 @@
  * @Author: HxB
  * @Date: 2022-04-20 11:24:12
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-22 09:11:35
+ * @LastEditTime: 2022-04-27 14:58:26
  * @Description: 路由守卫
  * @FilePath: \react-view\src\router\AuthRouteDom.tsx
  */
-import React, {Component} from 'react';
-import {Redirect, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class AuthRoute extends Component<any, any> {
   private _cancelHistoryListener: any;
@@ -16,7 +16,7 @@ class AuthRoute extends Component<any, any> {
     super(props);
   }
 
-  /// 相当于整个路由的 beforeEach 守卫
+  // / 相当于整个路由的 beforeEach 守卫
   componentDidMount() {
     // 可定义 beforeEnter 独显路由守卫，在此处使用 this.props.beforeEnter 调用。
     // componentWillMount
@@ -34,14 +34,14 @@ class AuthRoute extends Component<any, any> {
   // 可定义基础组件内部自己的守卫 使用 this.props.beforeRouteEnter 调用
   // 可定义基础组件内部自己的守卫 使用 this.props.beforeRouteLeave 调用
 
-  /// 相当于整个路由的 afterEach 守卫
+  // / 相当于整个路由的 afterEach 守卫
   componentWillUnmount() {
     // 离开路由页面的时候，清除监听。
     this._cancelHistoryListener();
   }
 
   render() {
-    const {path, roles} = this.props;
+    const { path, roles } = this.props;
 
     // alert(JSON.stringify(this.props));
 

@@ -7,17 +7,17 @@
  * @FilePath: \react-view\src\pages\Settings\index.tsx
  */
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Test from '@components/Test';
-import {testRequest} from '@services/user';
+import { testRequest } from '@services/user';
 
 const Settings = (props: any) => {
   const history = useHistory();
   testRequest();
   return (
     <div>
-      <div style={{fontSize: '5rem', textAlign: 'center'}}>设置页面</div>
+      <div style={{ fontSize: '5rem', textAlign: 'center' }}>设置页面</div>
       <hr />
       <Test linkList={['/', '/404', '/test/params']} />
       {/* <Link to="/">返回首页</Link> */}
