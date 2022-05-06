@@ -3,10 +3,11 @@
  * @Author: HxB
  * @Date: 2022-04-12 17:47:36
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-22 14:15:33
+ * @LastEditTime: 2022-05-06 16:29:49
  * @Description: 通用函数
  * @FilePath: \react-view\src\tools\js\utils.ts
  */
+// import { debounce, throttle } from 'js-xxx';
 /**
  * 防抖函数
  * @param fn

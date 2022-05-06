@@ -6,7 +6,7 @@
  * @Description: user service
  * @FilePath: \react-view\src\services\user.ts
  */
-import XHttp from '@tools/js/xhttp';
+import XHttp from '@/tools/api/xhttp';
 
 export function testRequest() {
   XHttp.get('/api/users').then(res => {
