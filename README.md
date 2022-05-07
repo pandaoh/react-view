@@ -4,17 +4,26 @@
 
 ## Technology Stack
 
-* React
+* React 17.x
 * TypeScript
 * Less/Scss
 * ECharts
-* Ant Design
-* Vite
+* Ant Design 4.x
+* Vite 2.x
 * Cordova
 * Electron
 * EsLint
 * Prettier
 * Husky
+
+## Use
+
+```bash
+git clone https://github.com/pandaoh/react-view.git
+
+npm i -g js-xcmd
+xcmd create-react-view [dir]
+```
 
 ## Development
 
@@ -39,6 +48,15 @@
 * `npm run install:electron-icon`
 
 * `npm run electron-icon`
+
+## Docs
+
+* [Ant Design](https://ant.design/components/overview-cn/)
+* [Antd ProComponents](https://procomponents.ant.design/components/)
+* [React](https://reactjs.bootcss.com/)
+* [Scss/Less](https://a.biugle.cn/sass_scss_less/)
+* [Vite](https://cn.vitejs.dev/guide/)
+* [XHttp](https://www.npmjs.com/package/js-xhttp)
 
 ## Others
 
