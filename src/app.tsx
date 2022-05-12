@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { CLIENT_RATIO } from './global_config';
 import AppRouter from './router';
 
-class App extends Component<any, {loading: boolean; clientRatio: number}> {
+class App extends Component<any, { loading: boolean; clientRatio: number }> {
   constructor(props: any) {
     super(props);
     this.state = {

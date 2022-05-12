@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-15 14:29:54
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-27 14:56:35
+ * @LastEditTime: 2022-05-12 17:47:42
  * @Description: eslint 配置文件
  * @FilePath: \react-view\.eslintrc.js
  */
@@ -27,7 +27,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 5 }],
     'no-mixed-spaces-and-tabs': ['error', false],
     'comma-dangle': ['error', 'always-multiline'],
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],

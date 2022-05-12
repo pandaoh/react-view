@@ -6,16 +6,16 @@
  * @Description: 图片类声明文件
  * @FilePath: \react-view\declare\images.d.ts
  */
-declare module '*.svg'
+declare module '*.svg';
 
-declare module '*.png'
+declare module '*.png';
 
-declare module '*.jpg'
+declare module '*.jpg';
 
-declare module '*.jpeg'
+declare module '*.jpeg';
 
-declare module '*.gif'
+declare module '*.gif';
 
-declare module '*.bmp'
+declare module '*.bmp';
 
-declare module '*.tiff'
+declare module '*.tiff';
