@@ -2,22 +2,34 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-20 15:22:05
+ * @LastEditTime: 2022-06-03 12:56:27
  * @Description: home 页面
  * @FilePath: \react-view\src\pages\Home\index.tsx
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.less';
-import Test from '@components/Test';
+import Footer from '@/components/Footer';
+import LogChart from '@/components/LogChart';
+import SquareChart from '@/components/SquareChart';
+import RectangleChart from '@/components/RectangleChart';
+import Header from '@/components/Header';
 
-const Home = (props: any) => {
-  console.log({ props });
+const Home = () => {
+  // const [running, setRunning] = useState<boolean>(true);
+
+  // setInterval(() => {
+  //   setRunning(!running);
+  // }, 8000);
+
   return (
     <div className="home">
-      <div style={{ fontSize: '5rem', textAlign: 'center' }}>首页</div>
-      <hr />
-      <Test linkList={['/settings', '/404']} />
+      <Header />
+      <LogChart />
+      <SquareChart />
+      <RectangleChart />
+      <Footer />
     </div>
   );
 };
+
 export default Home;

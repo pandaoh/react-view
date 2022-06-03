@@ -1,0 +1,90 @@
+.log-chart {
+  .rem(width, 2200);
+  .rem(height, 1900);
+  position: absolute;
+  .rem(top, 270);
+  .rem(right, 260);
+  background-image: url('@/static/img/log_bg.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  // transform-style: preserve-3d;
+}
+
+.btn-box {
+  .rem(width, 1900);
+  .rem(height, 200);
+  position: absolute;
+  .rem(top, 1500);
+  .rem(left, 160);
+  transform: perspective(500px) rotateX(30deg);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  overflow: auto;
+  .rem(letter-spacing, 5);
+
+  .ant-btn-ghost {
+    color: white;
+    background-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #40a9ff;
+    }
+
+    &.ant-btn-dangerous {
+      &:hover,
+      &:focus,
+      &:active {
+        color: #ff4d4f !important;
+      }
+    }
+  }
+}
+
+.log-box {
+  .rem(top, 220);
+  .rem(left, 160);
+  position: absolute;
+  .rem(width, 1900);
+  .rem(height, 1200);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .rem(padding, 10);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.log-title {
+  background-image: url('@/static/img/sub_title_bg.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  .rem(width, 2000);
+  .rem(height, 200);
+  position: absolute;
+  .rem(top, -20);
+  .rem(left, -355);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+  color: whitesmoke;
+  .rem(letter-spacing, 40);
+  .rem(font-size, 65);
+  .rem(line-height, 70);
+}
+
+.log-content {
+  width: 90%;
+  .rem(padding, 10);
+  .rem(margin, 10);
+  .rem(height, 100);
+}

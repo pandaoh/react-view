@@ -66,4 +66,10 @@ xcmd create-react-view [dir]
 * [Blog](http://a.biugle.cn)
 * Leo He
 
+## Preview
+
+* 本人写的一个小 `Demo`，可以用于参考重构等等。
+
+![](./readme.png)
+
 > Ps：程序员最讨厌的两种行为，一种是别人不写文档，另一种是别人让我写文档。(0.0)

@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-27 14:56:30
+ * @LastEditTime: 2022-06-03 10:26:45
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron_build.ts
  */
@@ -21,13 +21,17 @@ const createWindow = () => {
     center: true,
     // icon: path.join(__dirname, 'dist/res/electron/icons/icon.ico'),
     autoHideMenuBar: true, // 隐藏菜单
+    resizable: false, // 不可改变大小
     // useContentSize: true,
     // frame: false, // 无边框
-    width: 1280,
-    height: 720,
+    // width: 1280,
+    // height: 720,
+    width: 1024,
+    height: 576,
     webPreferences: {
+      webSecurity: false, // 是否禁用同源策略(上线时删除此配置)
       // preload: path.join(__dirname, 'preload.js'),
-      // nodeIntegration: true, // 解决无法使用require加载的bug
+      nodeIntegration: true, // 解决无法使用require加载的bug
       // contextIsolation: false, // 解决无法使用require加载的bug
     },
   });
@@ -50,6 +54,9 @@ const createWindow = () => {
     mainWindow = null;
   });
 };
+
+app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors'); // 兼容各个版本关闭跨域(上线时删除此配置)
+
 // 绑定ready方法，当electron应用创建成功时，创建一个窗口。
 app.whenReady().then(() => {
   globalShortcut.register('CommandOrControl+Alt+D', () => {

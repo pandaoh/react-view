@@ -8,7 +8,7 @@
     "before:exe": "npm run build && tsc ./electron_build.ts --outDir dist/res/electron/build_config/",
     "dev": "vite",
     "dev:app": "npm run before:app && cd ./cordova/ && cordova run android",
-    "dev:exe": "npm run before:exe && vite --open=false | chcp 65001 | electron . dev",
+    "dev:exe": "vite --open=false | chcp 65001 | electron . dev",
     "build": "vite build",
     "build:app": "npm run before:app && cd ./cordova/ && cordova build android --buildConfig=./www/dist/res/android/build_config/build.json --release",
     "build:exe": "npm run before:exe && electron-builder --win --ia32",
@@ -30,11 +30,12 @@
     }
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.19.5",
     "echarts": "^5.0.2",
     "js-xcall": "^1.1.1",
     "js-xhttp": "^1.4.8",
-    "js-xxx": "^1.1.5",
+    "js-xxx": "^1.1.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
