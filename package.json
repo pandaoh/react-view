@@ -12,6 +12,7 @@
     "build": "vite build",
     "build:app": "npm run before:app && cd ./cordova/ && cordova build android --buildConfig=./www/dist/res/android/build_config/build.json --release",
     "build:exe": "npm run before:exe && electron-builder --win --ia32",
+    "build:exe:dir": "npm run before:exe && electron-builder --win --ia32 --dir",
     "server": "vite preview",
     "server:app": "npm run before:app && cd ./cordova/ && cordova run android --buildConfig=./www/dist/res/android/build_config/build.json --release",
     "server:exe": "npm run before:exe && chcp 65001 && electron . prod",

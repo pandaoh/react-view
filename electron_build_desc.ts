@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-21 16:38:37
+ * @LastEditTime: 2022-07-13 13:57:41
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron_build_desc.ts
  */
@@ -10,6 +10,9 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const builder: any = {
   build: {
+    electronDownload: {
+      mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题
+    },
     productName: 'React-View', // 项目名 这也是生成的exe文件的前缀名
     appId: 'com.react.view', // 包名
     asar: true, // 是否打包成asar文件 默认false true 加密但 exe 文件很大
@@ -19,7 +22,7 @@ const builder: any = {
       output: 'build_exe', // 输出文件夹
     },
     win: {
-      target: ['nsis'],
+      target: ['nsis', 'zip'], // 可直接解压执行的 zip 包
       // arch: ['x64', 'ia32'], // ia32: 低版本32位, x64: 高版本64位 这个意思是打出来 32+64 的包，但是要注意：这样打包出来的安装包体积比较大，所以建议直接打32的安装包。
       icon: 'dist/res/electron/icons/icon.ico',
     },
@@ -71,3 +74,33 @@ const builder: any = {
 // 打包报错请提出安全防护软件
 // 解压 nsis-resources-3.4.1.zip 到 C:\Users\Administrator\AppData\Local\electron-builder\Cache\nsis\nsis-resources-3.4.1
 // 图标必须 .ico 文件 且像素大于 256*256 否则会报错 文件大小过大 生产环境窗口可能不显示（建议使用 electron-builder-icon 处理）
+
+/* -------------------------------------------------- */
+
+// 使用原生 js 开发 electron 应用，我们可以添加 preload.js 提供一些 api 供原生使用
+// window.addEventListener('DOMContentLoaded', () => {
+//   console.log('My HTML DOMContentLoaded.');
+// });
+// // Preload (Isolated World)
+// // 在 main 与 html 之间通信
+// const { contextBridge, ipcRenderer } = require('electron');
+// contextBridge.exposeInMainWorld('myIpc', {
+//   // From render to main.
+//   send: (channel, args) => {
+//     return ipcRenderer.sendSync(channel, args);
+//   },
+//   // From main to render.
+//   // listener 为自定义的消息处理函数，原型在 renderer.js(custom) 中。
+//   receive: (channel, listener) => {
+//     ipcRenderer.on(channel, (event, args) => listener(args));
+//   },
+//   // From render to main and back again.
+//   invoke: (channel, args) => {
+//     return ipcRenderer.invoke(channel, args);
+//   },
+//   exit: () => {
+//     console.log('destroy');
+//     ipcRenderer.send('destroy'); // main.js ---> ipcMain.on('destroy', () => app.exit());
+//   },
+//   getVersion: () => require('./package.json')['version'],
+// });

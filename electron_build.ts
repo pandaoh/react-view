@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-06-03 10:26:45
+ * @LastEditTime: 2022-07-13 14:18:06
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron_build.ts
  */
@@ -16,12 +16,18 @@ const mode = process.argv[2];
 let mainWindow: BrowserWindow | null = null;
 
 const createWindow = () => {
+  // https://www.csdn.net/tags/NtjaEg1sODUxNDktYmxvZwO0O0OO0O0O.html
   mainWindow = new BrowserWindow({
     // 16:9
     center: true,
     // icon: path.join(__dirname, 'dist/res/electron/icons/icon.ico'),
     autoHideMenuBar: true, // 隐藏菜单
+    alwaysOnTop: true, // 总在最前
     resizable: false, // 不可改变大小
+    // fullscreen: true, // 默认全屏
+    // minWidth: 1680, // min width
+    // minHeight: 945, // min height
+    // show: false, // is show
     // useContentSize: true,
     // frame: false, // 无边框
     // width: 1280,
@@ -31,8 +37,8 @@ const createWindow = () => {
     webPreferences: {
       webSecurity: false, // 是否禁用同源策略(上线时删除此配置)
       // preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true, // 解决无法使用require加载的bug
-      // contextIsolation: false, // 解决无法使用require加载的bug
+      nodeIntegration: true, // 解决无法使用 require 加载的bug
+      // contextIsolation: false, // preload 单独的运行环境
     },
   });
   if (mode === 'dev') {
@@ -53,6 +59,9 @@ const createWindow = () => {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
+  // mainWindow.maximize(); // max size if mainWindow show=false
+  // mainWindow.show(); // control mainWindow show
 };
 
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors'); // 兼容各个版本关闭跨域(上线时删除此配置)
