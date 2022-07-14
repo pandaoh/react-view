@@ -2,16 +2,20 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-13 13:57:41
+ * @LastEditTime: 2022-07-14 17:18:49
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron_build_desc.ts
  */
+
+// electron-builder 使用简介：https://blooddot.cool/posts/1867545/
+// electron-builder 打包：https://github.com/QDMarkMan/CodeBlog/blob/master/Electron/electron-builder%E6%89%93%E5%8C%85%E8%AF%A6%E8%A7%A3.md
+// electron-builder 通用配置翻译：https://blog.csdn.net/qq_38830593/article/details/89843722
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const builder: any = {
   build: {
     electronDownload: {
-      mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题
+      mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题 https://registry.npmmirror.com/-/binary/electron/
     },
     productName: 'React-View', // 项目名 这也是生成的exe文件的前缀名
     appId: 'com.react.view', // 包名
