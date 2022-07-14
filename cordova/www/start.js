@@ -1,4 +1,12 @@
 /*
+ * @Author: HxB
+ * @Date: 2022-04-22 14:23:20
+ * @LastEditors: DoubleAm
+ * @LastEditTime: 2022-07-14 14:20:21
+ * @Description: cordova 启动
+ * @FilePath: \react-view\cordova\www\start.js
+ */
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -19,11 +27,23 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+  // Cordova is now initialized. Have fun!
+  console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+  // Auto start the app
+  cordova.plugins.autoStart.enable();
+  // Auto start the app service
+  cordova.plugins.autoStart.enableService('ReactView');
+
+  // Hide the splash screen
+  navigator.splashscreen.hide();
+
+  setTimeout(function () {
+    window.location.href = 'dist/index.html';
+  }, 1000);
 }
+

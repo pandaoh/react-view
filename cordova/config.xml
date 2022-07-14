@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.react.view" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.react.view" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>React-View</name>
     <platform name="android">
         <!-- <resource-file src="www/dist/res/values/styles.xml" target="/app/src/main/res/values/styles.xml" /> -->
@@ -31,12 +31,44 @@
         <!-- <edit-config file="AndroidManifest.xml" target="/manifest/uses-sdk" mode="merge">
             <uses-sdk android:minSdkVersion="21" android:maxSdkVersion="29" android:targetSdkVersion="26" />
         </edit-config>  -->
+        <!-- https://blog.csdn.net/a451319296/article/details/109540635 权限大全 -->
+        <config-file parent="/*" target="AndroidManifest.xml">
+          <!-- 启动时自动启动 -->
+          <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+          <!-- 后台服务 -->
+          <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+          <!-- 弹窗 -->
+          <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+          <!-- 全屏 -->
+          <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+          <!-- 网络 -->
+          <uses-permission android:name="android.permission.INTERNET" />
+          <!-- 网络状态 -->
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+          <!-- 无线网络状态 -->
+          <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+          <!-- 读取外部存储 -->
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+          <!-- 写入外部存储 -->
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+          <!-- 管理外部存储 -->
+          <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+          <!-- 访问多媒体文件 -->
+          <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+          <!-- 设置屏幕方向 -->
+          <uses-permission android:name="android.permission.SET_ORIENTATION" />
+          <!-- 唤醒锁定 -->
+          <uses-permission android:name="android.permission.WAKE_LOCK" />
+          
+        </config-file>
+  
     </platform>
     <description>React-View</description>
     <author email="hxbpandaoh@163.com" href="https://a.biugle.cn">
         Leo He
     </author>
-    <content src="dist/index.html" />
+    <!-- <content src="dist/index.html" /> -->
+    <content src="start.html" /> 
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 </widget>

@@ -8,5 +8,4 @@
 **/*.toml
 **/*.xml
 **/**.min.*
-cordova/**
 build_exe/**
