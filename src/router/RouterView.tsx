@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:42:30
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-14 15:08:45
+ * @LastEditTime: 2022-07-15 14:48:12
  * @Description: 动态路由渲染组件
  * @FilePath: \react-view\src\router\RouterView.tsx
  */
@@ -15,7 +15,9 @@ import loadingGif from '@/static/loading.gif';
 const RouterView = (props: any) => {
   const { routes } = props;
   return (
-    <Suspense fallback={<img src={loadingGif} title="Loading" alt="Loading" />}>
+    <Suspense
+      fallback={<img style={{ margin: 'auto', width: '10%' }} src={loadingGif} title="Loading" alt="Loading" />}
+    >
       <Switch>
         {routes.map((item: any, index: number) => {
           return (

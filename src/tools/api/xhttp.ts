@@ -2,27 +2,31 @@
  * @Author: HxB
  * @Date: 2022-04-13 11:18:13
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-05-09 15:21:41
+ * @LastEditTime: 2022-07-15 14:44:52
  * @Description: 全局请求工具
  * @FilePath: \react-view\src\tools\api\xhttp.ts
  */
 import XHttp from 'js-xhttp';
+import store, { actions } from '@/redux';
+import { message } from 'antd';
 
 // 可以直接使用 XHttp，也可以全局初始化一个实例即可，所有配置如下，均为可选参数。也可以直接 XHttp.create(); 初始化。
 const $http = XHttp.create(
   {
     timeout: 10000, // 超时时间 default: 30000
     cancelDuplicatedRequest: true, // 是否取消重复请求 default: true
-    retryConfig: {
-      // 重试配置
-      retry: 3, // 次数
-      delay: 1000, // 每次重试的基础延迟时间
-    },
+    // retryConfig: {
+    //   // 重试配置
+    //   retry: 3, // 次数
+    //   delay: 1000, // 每次重试的基础延迟时间
+    // },
     requestHandler: (config: any) => {
+      store.dispatch(actions.loading.startLoading('loading...'));
       console.log('requestHandler', config); // 请求前的拦截处理 可自行打印日志log
       console.log(config?.cancelRequest); // 请求取消函数
     },
     responseHandler: (response: any) => {
+      message.success('请求成功');
       // 可在此处统一处理返回数据提示
       console.log('responseHandler', response);
       // if (response.data.code != 0) {
@@ -30,6 +34,7 @@ const $http = XHttp.create(
       // }
     },
     errorHandler: (error: any) => {
+      message.error('请求失败');
       // 统一错误处理
       // if (!XHttp.isCancel(error) && !error.message?.includes('custom-error')) {
       //   notification.error({
@@ -45,6 +50,7 @@ const $http = XHttp.create(
       return config; // 返回配置对象，可修改请求头。必须返回一个请求头对象，否则会抛出错误。
     },
     requestFinally: () => {
+      store.dispatch(actions.loading.stopLoading());
       console.log('requestFinally Hooks'); // 请求完成时的回调，无论结果如何。
     },
   },
