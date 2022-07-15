@@ -5,6 +5,7 @@
 ## Technology Stack
 
 * React 17.x
+* Redux Toolkit
 * TypeScript
 * Less/Scss
 * ECharts
