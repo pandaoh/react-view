@@ -28,20 +28,22 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta
+    <!-- 这个配置巨坑，让我白费了一下午的时间去找 cordova 如何支持 http 请求，结果是这个配置让我跨域失效了。 -->
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"
-    />
+    /> -->
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <title>SplashHome</title>
+    <title>CheckHome</title>
     <link rel="icon" type="image/png" href="dist/res/android/icon/icon.png" />
     <link rel="stylesheet" href="start.css" />
   </head>
   <body>
     <img src="dist/res/loading.gif" title="Loading" alt="Loading" />
+    <div>正在加载应用与检查更新...</div>
     <script src="cordova.js"></script>
     <script src="start.js"></script>
   </body>
