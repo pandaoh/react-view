@@ -7,8 +7,7 @@
  * @FilePath: \react-view\src\pages\Settings\index.tsx
  */
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import Test from '@components/Test';
 import { testRequest } from '@services/user';
 import { Button } from 'antd';

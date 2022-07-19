@@ -7,8 +7,8 @@
  * @FilePath: \react-view\src\tools\api\xhttp.ts
  */
 import XHttp from 'js-xhttp';
-import store, { actions } from '@/redux';
 import { message } from 'antd';
+import store, { actions } from '@/redux';
 
 // 可以直接使用 XHttp，也可以全局初始化一个实例即可，所有配置如下，均为可选参数。也可以直接 XHttp.create(); 初始化。
 const $http = XHttp.create(

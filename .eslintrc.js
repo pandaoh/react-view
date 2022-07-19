@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-15 14:29:54
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-05-12 17:47:42
+ * @LastEditTime: 2022-07-19 19:26:11
  * @Description: eslint 配置文件
  * @FilePath: \react-view\.eslintrc.js
  */
@@ -20,8 +20,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'spellcheck', 'import', 'zob'],
   rules: {
+    'no-undef': ['error'],
     'spaced-comment': ['error', 'always'],
     'space-before-blocks': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { max: 5 }],
@@ -40,6 +41,45 @@ module.exports = {
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'object-curly-spacing': ['error', 'always'],
     'array-bracket-spacing': ['error', 'never'],
+    'max-lines': ['error', 800], // 文件限制行数最大 800 行
+    'max-statements': ['error', 100], // 一个方法限制行数最大 100 行
+    'spellcheck/spell-checker': [
+      'warn',
+      {
+        comments: false,
+        strings: true,
+        identifiers: true,
+        lang: 'en_US',
+        skipWords: [
+          // npm i modules-words
+          'javascript',
+          'debounce',
+          'pathname',
+          'minify',
+          'charset',
+          'unmount',
+          'poweroff',
+          'resize',
+          'linux',
+          'darwin',
+          'resizable',
+        ],
+        skipIfMatch: [
+          'http://[^s]*',
+          '^[-\\w]+/[-\\w\\.]+$', // For MIME Types
+        ],
+        skipWordIfMatch: [
+          '^foobar.*$', // words that begin with foobar will not be checked
+        ],
+        minLength: 5,
+      },
+    ],
+    'import/first': ['error'],
+    'import/exports-last': ['error'],
+    'import/newline-after-import': ['error'],
+    'import/no-duplicates': ['error'],
+    'import/order': ['error', { 'newlines-between': 'never' }],
+    // 'zob/comment': 'error', // 中英文空格间距
   },
   settings: {
     react: {

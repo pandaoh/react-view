@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-13 14:18:06
+ * @LastEditTime: 2022-07-19 17:38:37
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron_build.ts
  */
@@ -11,6 +11,7 @@ import { app, BrowserWindow, globalShortcut } from 'electron';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const path = require('path');
 
+// eslint-disable-next-line no-undef
 const mode = process.argv[2];
 
 let mainWindow: BrowserWindow | null = null;
@@ -87,6 +88,7 @@ app.whenReady().then(() => {
   mainWindow.menuBarVisible = false;
   mainWindow.setAutoHideMenuBar(false);
 
+  // eslint-disable-next-line no-undef
   if (process.platform != 'darwin') {
     mainWindow.setIcon('dist/res/electron/icons/icon.ico');
   }
@@ -106,6 +108,7 @@ app.whenReady().then(() => {
 // 绑定关闭方法，当electron应用关闭时，退出electron。macos系统因为具有dock栏机制，可选择不退出。
 app.on('window-all-closed', function () {
   // macOS中除非用户按下 `Cmd + Q` 显式退出,否则应用与菜单栏始终处于活动状态.
+  // eslint-disable-next-line no-undef
   if (process.platform !== 'darwin') {
     app.quit();
   }

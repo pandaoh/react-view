@@ -165,4 +165,3 @@ window.$toast = function (message, duration = 2000, position = 'center') {
     },
   );
 };
-

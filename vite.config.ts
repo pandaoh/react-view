@@ -2,17 +2,18 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-27 14:56:06
+ * @LastEditTime: 2022-07-19 19:27:50
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
+import path from 'path';
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-import path from 'path';
 // cjs2esmVitePlugin 可以将 cjs 文件转换为 esm 文件
 // https://github.com/WarrenJones/vite-plugin-require-transform // 支持 require 加载 还有 vite-plugin-require 也支持
 // https://github.com/vitejs/awesome-vite // 好用的 vite 插件
 
+// eslint-disable-next-line no-undef
 const getPath = _path => path.resolve(__dirname, _path);
 
 // https://vitejs.dev/config/

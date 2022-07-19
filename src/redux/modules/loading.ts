@@ -2,13 +2,14 @@
  * @Author: HxB
  * @Date: 2022-07-15 10:48:59
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-15 13:55:41
+ * @LastEditTime: 2022-07-19 19:27:06
  * @Description: redux loading module
  * @FilePath: \react-view\src\redux\modules\loading.ts
  */
 import { createSlice } from '@reduxjs/toolkit';
 
 // 创建 loading 模块并导出
+// eslint-disable-next-line import/exports-last
 export const loadingSlice = createSlice({
   name: 'loading',
   initialState: {

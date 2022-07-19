@@ -7,10 +7,10 @@
  * @FilePath: \react-view\src\router\index.tsx
  */
 import React from 'react';
-import routes from './_config'; // 路由列表，有其他的路由列表页面可以继续引入
-import RouterView from './RouterView'; // 封装好的 Router
 import { HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import routes from './_config'; // 路由列表，有其他的路由列表页面可以继续引入
+import RouterView from './RouterView'; // 封装好的 Router
 import { selectors } from '@/redux';
 import loadingImg from '@/static/img/loading.gif';
 

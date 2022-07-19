@@ -7,8 +7,7 @@
  * @FilePath: \react-view\src\router\RouterView.tsx
  */
 import { Route, Switch } from 'react-router-dom'; // 引入 react-router-dom
-import { Suspense } from 'react'; // Suspense 配合前面的 laze() 使用，不加上会报错
-import React from 'react';
+import React, { Suspense } from 'react'; // Suspense 配合前面的 laze() 使用，不加上会报错
 import AuthRouteDom from './AuthRouteDom';
 import loadingGif from '@/static/loading.gif';
 

@@ -2,19 +2,19 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-15 13:49:40
+ * @LastEditTime: 2022-07-19 19:25:34
  * @Description: home 页面
  * @FilePath: \react-view\src\pages\Home\index.tsx
  */
 import React, { useEffect, useState } from 'react';
 import './style.less';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import Footer from '@/components/Footer';
 import LogChart from '@/components/LogChart';
 import SquareChart from '@/components/SquareChart';
 import RectangleChart from '@/components/RectangleChart';
 import Header from '@/components/Header';
 // redux 中的 useSelector 和 useDispatch Hooks 可以用于获取 store 中的 state 和 dispatch 函数。(第二种方式)
-import { useDispatch, useSelector, connect } from 'react-redux';
 import { actions, selectors } from '@/redux';
 
 const Home = (props: any) => {
