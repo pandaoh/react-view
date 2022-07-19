@@ -4,7 +4,7 @@
   "description": "基于 React 的跨平台通用模板(移动/PC/Web)",
   "main": "dist/res/electron/build_config/electron_build.js",
   "scripts": {
-    "before:app": "vite build --outDir ./cordova/www/dist && cd ./cordova/ && cordova platform remove android && cordova platform add android && cordova plugin add cordova-plugin-splashscreen && cordova plugin add cordova-plugin-autostart@2.3.0 && cordova plugin add cordova-plugin-apkupdater",
+    "before:app": "vite build --outDir ./cordova/www/dist && cd ./cordova/ && cordova platform remove android && cordova platform add android && cordova plugin add cordova-plugin-splashscreen && cordova plugin add cordova-plugin-apkupdater && cordova plugin add cordova-plugin-autostart@2.3.0 && cordova plugin add cordova-custom-config && cordova plugin add cordova-plugin-x-toast && cordova plugin add cordova-plugin-statusbar",
     "before:exe": "npm run build && tsc ./electron_build.ts --outDir dist/res/electron/build_config/",
     "dev": "vite",
     "dev:app": "npm run before:app && cd ./cordova/ && cordova run android",

@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-14 17:18:49
+ * @LastEditTime: 2022-07-19 12:27:13
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron_build_desc.ts
  */
@@ -15,7 +15,7 @@
 const builder: any = {
   build: {
     electronDownload: {
-      mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题 https://registry.npmmirror.com/-/binary/electron/
+      mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题 https://registry.npmmirror.com/-/binary/electron/v
     },
     productName: 'React-View', // 项目名 这也是生成的exe文件的前缀名
     appId: 'com.react.view', // 包名

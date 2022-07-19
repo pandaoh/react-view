@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-22 14:23:20
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-16 21:59:18
+ * @LastEditTime: 2022-07-19 15:36:02
  * @Description: cordova 启动
  * @FilePath: \react-view\cordova\www\start.js
  */
@@ -33,6 +33,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
   // Cordova is now initialized. Have fun!
   console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+
+  // StatusBar.show();
 
   // Auto start the app
   cordova.plugins.autoStart.enable();
@@ -82,15 +84,20 @@ function checkUpdate() {
               `发现新版本(V${response.version})，点击确定应用将在后台进行升级。\n[更新时间：${response.date}]-{文件大小：${response.size} M}\n${response.remark}\n`,
             );
             if (result) {
+              window.$toast('正在后台下载更新，请稍后...');
               await ApkUpdater.download(response.downloadUrl);
               await ApkUpdater.install();
+            } else {
+              window.$toast('暂不升级');
             }
-            toMainApp();
+          } else {
+            window.$toast('当前应用为最新版本，无需升级。');
           }
         } catch (error) {
+          window.$toast('获取版本信息失败！');
           console.log(error);
-          toMainApp();
         }
+        toMainApp();
       }
     };
   }, 0);
@@ -119,8 +126,43 @@ function checkVersion(targetVersion, currentVersion, testStr = '-rc') {
 }
 
 function toMainApp() {
+  StatusBar.hide();
   setTimeout(() => {
     window.location.href = 'dist/index.html';
   }, 1000);
 }
+
+window.$toast = function (message, duration = 2000, position = 'center') {
+  window.plugins.toast.showWithOptions(
+    {
+      message: message,
+      duration: duration, // ms
+      position: position, // top | bottom | center
+      // addPixelsY: -40, // (optional) added a negative value to move it up a bit (default 0)
+      // data: { foo: 'bar' }, // (optional) pass in a JSON object here (it will be sent back in the success callback below)
+      // styling: {
+      //   opacity: 0.75, // 0.0 (transparent) to 1.0 (opaque). Default 0.8
+      //   backgroundColor: '#FF0000', // make sure you use #RRGGBB. Default #333333
+      //   textColor: '#FFFF00', // Ditto. Default #FFFFFF
+      //   textSize: 20.5, // Default is approx. 13.
+      //   cornerRadius: 16, // minimum is 0 (square). iOS default 20, Android default 100
+      //   horizontalPadding: 20, // iOS default 16, Android default 50
+      //   verticalPadding: 16 // iOS default 12, Android default 30
+      // }
+    },
+    // implement the success callback
+    function (result) {
+      if (result && result.event) {
+        console.log('The toast was tapped or got hidden, see the value of result.event!');
+        if (result.event === 'hide') {
+          console.log('The toast has been shown', result);
+        }
+      }
+    },
+    // implement the error callback
+    function (error) {
+      console.error(error);
+    },
+  );
+};
 
