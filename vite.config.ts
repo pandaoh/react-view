@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }) => {
       target: 'modules', // 设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——'modules'，这是指 支持原生 ES 模块的浏览器。
       outDir: 'dist', // 指定输出路径
       assetsDir: 'assets', // 指定生成静态资源的存放路径
-      minify: 'terser', // 混淆器，terser构建后文件体积更小。
+      minify: 'terser', // 混淆器，terser 构建后文件体积更小。
       // rollupOptions: { // vite build --config ./vite.build.ts --emptyOutDir=false
       //   input: {
       //     'res/electron/electron_build.js': getPath('./electron_build.ts'),

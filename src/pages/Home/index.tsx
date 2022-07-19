@@ -44,5 +44,5 @@ const Home = (props: any) => {
   );
 };
 
-// redux connect 将 store 中的 state、action、dispatch 导入到组件中。(第一种方式)
+// redux connect 将 store 中的 state 、 action 、 dispatch 导入到组件中。(第一种方式)
 export default connect(selectors.loading, actions.loading)(Home);

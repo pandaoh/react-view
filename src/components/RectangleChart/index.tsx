@@ -2,15 +2,14 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-06-03 14:11:52
+ * @LastEditTime: 2022-07-19 20:07:20
  * @Description: RectangleChart
  * @FilePath: \react-view\src\components\RectangleChart\index.tsx
  */
-import { formatDate } from 'js-xxx';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './style.less';
 
-const RectangleChart = (props: any) => {
+const RectangleChart = () => {
   return (
     <div className="rectangle-chart">
       <div className="content-card">

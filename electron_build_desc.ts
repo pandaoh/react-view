@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 12:27:13
+ * @LastEditTime: 2022-07-19 20:03:28
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron_build_desc.ts
  */
@@ -17,9 +17,9 @@ const builder: any = {
     electronDownload: {
       mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题 https://registry.npmmirror.com/-/binary/electron/v
     },
-    productName: 'React-View', // 项目名 这也是生成的exe文件的前缀名
+    productName: 'React-View', // 项目名 这也是生成的 exe 文件的前缀名
     appId: 'com.react.view', // 包名
-    asar: true, // 是否打包成asar文件 默认false true 加密但 exe 文件很大
+    asar: true, // 是否打包成 asar 文件 默认 false true 加密但 exe 文件很大
     copyright: 'Leo He © 2022', // 版权信息
     files: ['dist/**/*'], // 需要打包的文件
     directories: {
@@ -27,13 +27,13 @@ const builder: any = {
     },
     win: {
       target: ['nsis', 'zip'], // 可直接解压执行的 zip 包
-      // arch: ['x64', 'ia32'], // ia32: 低版本32位, x64: 高版本64位 这个意思是打出来 32+64 的包，但是要注意：这样打包出来的安装包体积比较大，所以建议直接打32的安装包。
+      // arch: ['x64', 'ia32'], // ia32: 低版本 32 位，x64: 高版本 64 位 这个意思是打出来 32+64 的包，但是要注意：这样打包出来的安装包体积比较大，所以建议直接打 32 的安装包。
       icon: 'dist/res/electron/icons/icon.ico',
     },
     nsis: {
       language: 2052, // 语言
       artifactName: 'react_view.exe', // 安装包名称
-      allowElevation: true, // 允许请求提升 如果为false，则用户必须使用提升的权限重新启动安装程序。
+      allowElevation: true, // 允许请求提升 如果为 false，则用户必须使用提升的权限重新启动安装程序。
       installerHeader: 'dist/res/electron/icons/icon.ico', // 安装包头部图标
       installerHeaderIcon: 'dist/res/electron/icons/icon.ico', // 安装包头部图标
       uninstallerIcon: 'dist/res/electron/icons/icon.ico', // 卸载图标
@@ -42,7 +42,7 @@ const builder: any = {
       allowToChangeInstallationDirectory: true, // 允许改变安装目录
       oneClick: false, // 一键安装
       shortcutName: 'xxx', // 图标名称
-      include: 'dist/res/electron/build_config/installer.nsh', // 包含的自定义nsis脚本
+      include: 'dist/res/electron/build_config/installer.nsh', // 包含的自定义 nsis 脚本
     },
     publish: [
       {
@@ -81,7 +81,7 @@ const builder: any = {
 
 /* -------------------------------------------------- */
 
-// 使用原生 js 开发 electron 应用，我们可以添加 preload.js 提供一些 api 供原生使用
+// 使用原生 js 开发 electron 应用，我们可以添加 preload.js 提供一些 api 供原生使用。
 // window.addEventListener('DOMContentLoaded', () => {
 //   console.log('My HTML DOMContentLoaded.');
 // });

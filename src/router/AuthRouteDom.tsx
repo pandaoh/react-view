@@ -30,7 +30,7 @@ class AuthRoute extends Component<any, any> {
 
   // 参考 Vue 的路由守卫
   // 我们可以封装基础组件与布局注入路由守卫，并让组件继承此基础组件。
-  // 若想定义 beforeRouteUpdate，可以使用基础组件 componentWillUpdate/componentDidUpdate。
+  // 若想定义 beforeRouteUpdate，可以使用基础组件 componentWillUpdate/componentDidUpdate 。
   // 可定义基础组件内部自己的守卫 使用 this.props.beforeRouteEnter 调用
   // 可定义基础组件内部自己的守卫 使用 this.props.beforeRouteLeave 调用
 
@@ -45,7 +45,7 @@ class AuthRoute extends Component<any, any> {
 
     // alert(JSON.stringify(this.props));
 
-    // 用户角色，全局状态管理可自行引入 redux。
+    // 用户角色，全局状态管理可自行引入 redux 。
     const userRoles = ['admin'];
 
     // 用户已登录，还想去登录页面。禁止
@@ -65,7 +65,7 @@ class AuthRoute extends Component<any, any> {
       return <Redirect to="/login" />;
     }
 
-    // 路由需要校验，且用户已登录。有权限进入，无权限 404。
+    // 路由需要校验，且用户已登录。有权限进入，无权限 404 。
     if (roles?.some((role: any) => userRoles?.includes(role))) {
       return $AuthRouteDom;
     } else {

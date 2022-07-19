@@ -43,7 +43,7 @@ export default loadingSlice.reducer;
 
 /* ---------- 高级用法 ---------- */
 
-// 内置了 thunk 插件，可以异步 dispatch action，也可以 dispatch 其他 action。
+// 内置了 thunk 插件，可以异步 dispatch action，也可以 dispatch 其他 action 。
 export const asyncStartLoading = msg => dispatch => {
   setTimeout(() => {
     dispatch(startLoading(msg));

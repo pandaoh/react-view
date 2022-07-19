@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 17:38:37
+ * @LastEditTime: 2022-07-19 19:59:54
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron_build.ts
  */
@@ -38,7 +38,7 @@ const createWindow = () => {
     webPreferences: {
       webSecurity: false, // 是否禁用同源策略(上线时删除此配置)
       // preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true, // 解决无法使用 require 加载的bug
+      nodeIntegration: true, // 解决无法使用 require 加载的 bug
       // contextIsolation: false, // preload 单独的运行环境
     },
   });
@@ -56,7 +56,7 @@ const createWindow = () => {
     mainWindow.loadFile('dist/index.html').catch(() => null);
   }
 
-  // 关闭window时触发下列事件.
+  // 关闭 window 时触发下列事件
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
@@ -67,7 +67,7 @@ const createWindow = () => {
 
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors'); // 兼容各个版本关闭跨域(上线时删除此配置)
 
-// 绑定ready方法，当electron应用创建成功时，创建一个窗口。
+// 绑定 ready 方法，当 electron 应用创建成功时，创建一个窗口。
 app.whenReady().then(() => {
   globalShortcut.register('CommandOrControl+Alt+D', () => {
     mainWindow.webContents.isDevToolsOpened()
@@ -93,10 +93,10 @@ app.whenReady().then(() => {
     mainWindow.setIcon('dist/res/electron/icons/icon.ico');
   }
 
-  // 绑定activate方法，当electron应用激活时，创建一个窗口。这是为了点击关闭按钮之后从dock栏打开。
+  // 绑定 activate 方法，当 electron 应用激活时，创建一个窗口。这是为了点击关闭按钮之后从 dock 栏打开。
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
-    // macOS中点击Dock图标时没有已打开的其余应用窗口时,则通常在应用中重建一个窗口
+    // macOS 中点击 Dock 图标时没有已打开的其余应用窗口时，则通常在应用中重建一个窗口。
     if (mainWindow === null) {
       createWindow();
     }
@@ -105,9 +105,9 @@ app.whenReady().then(() => {
 
 // app.on('ready', createWindow);
 
-// 绑定关闭方法，当electron应用关闭时，退出electron。macos系统因为具有dock栏机制，可选择不退出。
+// 绑定关闭方法，当 electron 应用关闭时，退出 electron 。 macos 系统因为具有 dock 栏机制，可选择不退出。
 app.on('window-all-closed', function () {
-  // macOS中除非用户按下 `Cmd + Q` 显式退出,否则应用与菜单栏始终处于活动状态.
+  // macOS 中除非用户按下 `Cmd + Q` 显式退出，否则应用与菜单栏始终处于活动状态。
   // eslint-disable-next-line no-undef
   if (process.platform !== 'darwin') {
     app.quit();

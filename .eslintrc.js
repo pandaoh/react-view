@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-15 14:29:54
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 19:26:11
+ * @LastEditTime: 2022-07-19 20:02:16
  * @Description: eslint 配置文件
  * @FilePath: \react-view\.eslintrc.js
  */
@@ -79,7 +79,7 @@ module.exports = {
     'import/newline-after-import': ['error'],
     'import/no-duplicates': ['error'],
     'import/order': ['error', { 'newlines-between': 'never' }],
-    // 'zob/comment': 'error', // 中英文空格间距
+    'zob/comment': 'error', // 中英文空格间距 找英文符号正则 ([\u4e00-\u9fa5]\s*[!@#$%^&*_+=;:'"{\[\]},.\/\\`\(\)])
   },
   settings: {
     react: {
