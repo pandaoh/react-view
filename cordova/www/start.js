@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-22 14:23:20
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 15:36:02
+ * @LastEditTime: 2022-07-20 10:37:44
  * @Description: cordova 启动
  * @FilePath: \react-view\cordova\www\start.js
  */
@@ -27,6 +27,17 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+
+document.addEventListener(
+  'backbutton',
+  e => {
+    window.$toast('禁止退出应用');
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  },
+  false,
+);
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
