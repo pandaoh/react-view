@@ -29,6 +29,8 @@
   },
   "husky": {
     "hooks": {
+      "add-script": "prepare : husky install(prepare will run after 'npm install')",
+      "how-to-use": "npx husky add .husky/pre-commit $YOUR_PRE_COMMIT_HOOK_SCRIPT",
       "pre-commit": "npm run lint && npm run time"
     }
   },
@@ -112,5 +114,6 @@
     "type": "git",
     "url": "git+https://github.com/pandaoh/react-view.git"
   },
-  "homepage": "https://github.com/pandaoh/react-view/blob/main/README.md"
+  "homepage": "https://github.com/pandaoh/react-view/blob/main/README.md",
+  "time": "2911402120072022"
 }
