@@ -7,3 +7,4 @@
 **/**.min.*
 build_exe/**
 **/package-lock.json
+.husky/**

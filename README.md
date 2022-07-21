@@ -52,12 +52,14 @@ xcmd create-react-view [dir]
 
 ## Docs
 
-* [Ant Design](https://ant.design/components/overview-cn/)
-* [Antd ProComponents](https://procomponents.ant.design/components/)
 * [React](https://reactjs.bootcss.com/)
-* [Scss/Less](https://a.biugle.cn/sass_scss_less/)
+* [Redux Toolkit](http://cn.redux.js.org/redux-toolkit/overview/)
 * [Vite](https://cn.vitejs.dev/guide/)
+* [Ant Design](https://ant.design/components/overview-cn/)
+* [Ant Design ProComponents](https://procomponents.ant.design/components/)
+* [Scss/Less](https://a.biugle.cn/sass_scss_less/)
 * [XHttp](https://www.npmjs.com/package/js-xhttp)
+* [Xxx](https://github.com/pandaoh/js-xxx/blob/main/docs/README.md)
 
 ## Others
 

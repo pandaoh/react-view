@@ -22,10 +22,15 @@
     "prettier": "prettier --write ./**/*.{ts,tsx,js,jsx,vue,html,css,scss,less}",
     "install:electron-icon": "npm i -D electron-icon-builder --ignore-scripts",
     "electron-icon": "electron-icon-builder --input=./src/static/icon.png --output=./public/res/electron/ --flatten",
+    "eslint:init": "eslint --init",
     "update-x": "npm i js-xhttp js-xxx js-xcall",
+    "update-x-dev": "npm i js-xcmd -D",
     "husky": "husky install",
     "clean": "xcmd clean",
-    "time": "xcmd update-time"
+    "time": "xcmd update-time",
+    "add-less": "npm install less less-loader --save-dev",
+    "add-sass": "npm install sass sass-loader node-sass --save-dev",
+    "add-antd-pro-components": "npm i @ant-design/pro-components --save"
   },
   "husky": {
     "hooks": {
