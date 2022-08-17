@@ -2,13 +2,13 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 19:27:50
+ * @LastEditTime: 2022-08-17 10:58:43
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
 import path from 'path';
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import reactPlugin from '@vitejs/plugin-react';
 // cjs2esmVitePlugin 可以将 cjs 文件转换为 esm 文件
 // https://github.com/WarrenJones/vite-plugin-require-transform // 支持 require 加载 还有 vite-plugin-require 也支持
 // https://github.com/vitejs/awesome-vite // 好用的 vite 插件
@@ -27,6 +27,13 @@ export default defineConfig(({ command, mode }) => {
       outDir: 'dist', // 指定输出路径
       assetsDir: 'assets', // 指定生成静态资源的存放路径
       minify: 'terser', // 混淆器，terser 构建后文件体积更小。
+      terserOptions: {
+        // 生产环境去除 console
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
       // rollupOptions: { // vite build --config ./vite.build.ts --emptyOutDir=false
       //   input: {
       //     'res/electron/electron_build.js': getPath('./electron_build.ts'),
@@ -55,6 +62,8 @@ export default defineConfig(({ command, mode }) => {
       cors: true, // 默认启用并允许任何源
       open: true, // 在服务器启动时自动在浏览器中打开应用程序
       port: 1998, // 启动端口
+      host: true, // network address to bind to
+      hmr: true, // 启用热更新
       // 反向代理配置，注意 rewrite 写法，开始没看文档在这里踩了坑。
       proxy: {
         // https://vitejs.cn/config/#server-proxy
@@ -89,6 +98,6 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-    plugins: [reactRefresh()],
+    plugins: [reactPlugin()],
   };
 });

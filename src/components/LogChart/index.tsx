@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-06-03 15:04:36
+ * @LastEditTime: 2022-08-17 11:02:41
  * @Description: LogChart
  * @FilePath: \react-view\src\components\LogChart\index.tsx
  */
@@ -98,16 +98,16 @@ const LogChart = (props: any) => {
       </div>
       <div className="btn-box">
         {/* <LoadingOutlined /> */}
-        <Button type="ghost" icon={<PlayCircleOutlined />} onClick={goRouter.bind(this, '/404')}>
+        <Button type="ghost" icon={<PlayCircleOutlined />} onClick={() => goRouter('/404')}>
           启动
         </Button>
-        <Button type="ghost" danger icon={<PoweroffOutlined />} onClick={goRouter.bind(this, '/')}>
+        <Button type="ghost" danger icon={<PoweroffOutlined />} onClick={() => goRouter('/')}>
           停止
         </Button>
-        <Button type="ghost" onClick={goRouter.bind(this, '/login')} icon={<RedoOutlined />}>
+        <Button type="ghost" onClick={() => goRouter('/login')} icon={<RedoOutlined />}>
           刷新
         </Button>
-        <Button type="ghost" onClick={goRouter.bind(this, '/settings')} danger icon={<SettingOutlined />}>
+        <Button type="ghost" onClick={() => goRouter('/settings')} danger icon={<SettingOutlined />}>
           设置
         </Button>
         <Button type="ghost" icon={<UserSwitchOutlined />}>
