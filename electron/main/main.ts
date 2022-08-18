@@ -2,15 +2,14 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 19:59:54
+ * @LastEditTime: 2022-08-18 12:41:46
  * @Description: electron 打包与启动文件
- * @FilePath: \react-view\electron_build.ts
+ * @FilePath: \react-view\electron\main\main.ts
  */
 // https://vitejs.cn/guide/env-and-mode.html#env-files
-import { app, BrowserWindow, globalShortcut } from 'electron';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-// const path = require('path');
 
+import path from 'path';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 // eslint-disable-next-line no-undef
 const mode = process.argv[2];
 
@@ -37,7 +36,8 @@ const createWindow = () => {
     height: 576,
     webPreferences: {
       webSecurity: false, // 是否禁用同源策略(上线时删除此配置)
-      // preload: path.join(__dirname, 'preload.js'),
+      // eslint-disable-next-line no-undef
+      preload: path.join(__dirname, '../preload/preload.js'),
       nodeIntegration: true, // 解决无法使用 require 加载的 bug
       // contextIsolation: false, // preload 单独的运行环境
     },
@@ -70,9 +70,9 @@ app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors'); // 兼容各
 // 绑定 ready 方法，当 electron 应用创建成功时，创建一个窗口。
 app.whenReady().then(() => {
   globalShortcut.register('CommandOrControl+Alt+D', () => {
-    mainWindow.webContents.isDevToolsOpened()
-      ? mainWindow.webContents.closeDevTools()
-      : mainWindow.webContents.openDevTools();
+    mainWindow?.webContents.isDevToolsOpened()
+      ? mainWindow?.webContents.closeDevTools()
+      : mainWindow?.webContents.openDevTools();
   });
   globalShortcut.register('CommandOrControl+Shift+I', () => {
     console.log('CLOSE DEV TOOLS 关闭默认控制台打开事件');
@@ -80,17 +80,19 @@ app.whenReady().then(() => {
 
   createWindow();
 
-  if (!mainWindow.isFocused()) {
-    mainWindow.focus();
+  if (!mainWindow?.isFocused()) {
+    mainWindow?.focus();
   }
 
-  mainWindow.setMenuBarVisibility(false); // 设置菜单栏不可见
+  mainWindow?.setMenuBarVisibility(false); // 设置菜单栏不可见
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   mainWindow.menuBarVisible = false;
-  mainWindow.setAutoHideMenuBar(false);
+  mainWindow?.setAutoHideMenuBar(false);
 
   // eslint-disable-next-line no-undef
   if (process.platform != 'darwin') {
-    mainWindow.setIcon('dist/res/electron/icons/icon.ico');
+    mainWindow?.setIcon('dist/res/electron/icons/icon.ico');
   }
 
   // 绑定 activate 方法，当 electron 应用激活时，创建一个窗口。这是为了点击关闭按钮之后从 dock 栏打开。
@@ -113,3 +115,17 @@ app.on('window-all-closed', function () {
     app.quit();
   }
 });
+
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+  app.quit();
+} else {
+  app.on('second-instance', (event, commandLine, workingDirectory) => {
+    // 当运行第二个实例时，将会聚焦到 mainWindow 这个窗口。
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+      mainWindow.show();
+    }
+  });
+}

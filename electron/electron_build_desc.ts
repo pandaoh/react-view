@@ -2,9 +2,9 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 20:03:28
+ * @LastEditTime: 2022-08-18 14:32:43
  * @Description: electron-builder 打包配置项介绍
- * @FilePath: \react-view\electron_build_desc.ts
+ * @FilePath: \react-view\electron\electron_build_desc.ts
  */
 
 // electron-builder 使用简介：https://blooddot.cool/posts/1867545/
@@ -13,6 +13,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const builder: any = {
+  // https://www.electron.build/configuration/configuration
   build: {
     electronDownload: {
       mirror: 'https://npm.taobao.org/mirrors/electron/', // 解决下载资源超级慢的问题 https://registry.npmmirror.com/-/binary/electron/v
@@ -20,10 +21,11 @@ const builder: any = {
     productName: 'React-View', // 项目名 这也是生成的 exe 文件的前缀名
     appId: 'com.react.view', // 包名
     asar: true, // 是否打包成 asar 文件 默认 false true 加密但 exe 文件很大
-    copyright: 'Leo He © 2022', // 版权信息
+    copyright: 'Copyright © 2022 ${author}', // 版权信息
     files: ['dist/**/*'], // 需要打包的文件
     directories: {
-      output: 'build_exe', // 输出文件夹
+      output: 'build_exe/${version}', // 输出文件夹
+      buildResources: 'build_exe/resources', // 打包资源文件夹
     },
     win: {
       target: ['nsis', 'zip'], // 可直接解压执行的 zip 包
@@ -32,7 +34,7 @@ const builder: any = {
     },
     nsis: {
       language: 2052, // 语言
-      artifactName: 'react_view.exe', // 安装包名称
+      artifactName: '${productName}-Windows-${version}-Setup.${ext}', // 安装包名称
       allowElevation: true, // 允许请求提升 如果为 false，则用户必须使用提升的权限重新启动安装程序。
       installerHeader: 'dist/res/electron/icons/icon.ico', // 安装包头部图标
       installerHeaderIcon: 'dist/res/electron/icons/icon.ico', // 安装包头部图标
@@ -40,7 +42,9 @@ const builder: any = {
       createDesktopShortcut: true, // 创建桌面图标
       createStartMenuShortcut: true, // 创建开始菜单图标
       allowToChangeInstallationDirectory: true, // 允许改变安装目录
+      perMachine: false, // 是否是 perMachine 安装
       oneClick: false, // 一键安装
+      deleteAppDataOnUninstall: true, // 卸载时是否删除数据
       shortcutName: 'xxx', // 图标名称
       include: 'dist/res/electron/build_config/installer.nsh', // 包含的自定义 nsis 脚本
     },

@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-15 14:29:54
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-19 20:02:16
+ * @LastEditTime: 2022-08-18 10:36:08
  * @Description: eslint 配置文件
  * @FilePath: \react-view\.eslintrc.js
  */
@@ -63,6 +63,7 @@ module.exports = {
           'linux',
           'darwin',
           'resizable',
+          'renderer',
         ],
         skipIfMatch: [
           'http://[^s]*',

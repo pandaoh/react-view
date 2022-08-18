@@ -2,22 +2,24 @@
   "name": "react-view-cross-platform",
   "version": "1.0.0",
   "description": "基于 React 的跨平台通用模板(移动/PC/Web)",
-  "main": "dist/res/electron/build_config/electron_build.js",
+  "main": "dist/electron/main/main.js",
   "scripts": {
     "init": "npm i --ignore-scripts",
     "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions",
     "before:app": "vite build --outDir ./cordova/www/dist && cd ./cordova/ && cordova platform remove android && cordova platform add android && cordova plugin add cordova-plugin-splashscreen && cordova plugin add cordova-plugin-apkupdater && cordova plugin add cordova-plugin-autostart@2.3.0 && cordova plugin add cordova-custom-config && cordova plugin add cordova-plugin-x-toast && cordova plugin add cordova-plugin-statusbar",
-    "before:exe": "npm run build && tsc ./electron_build.ts --outDir dist/res/electron/build_config/",
     "dev": "vite",
     "dev:app": "npm run before:app && cd ./cordova/ && cordova run android",
-    "dev:exe": "vite --open=false | chcp 65001 | electron . dev",
+    "tsc:electron": "tsc -p tsconfig.electron.json",
+    "dev:electron": "npm run tsc:electron && electron . dev",
+    "watch:electron": "nodemon --watch electron/** --ext ts,js,tsx,jsx,json --exec npm run dev:electron",
+    "dev:exe": "vite --open=false | chcp 65001 | npm run watch:electron",
     "build": "vite build",
     "build:app": "npm run before:app && cd ./cordova/ && cordova build android --buildConfig=./www/dist/res/android/build_config/build.json --release",
-    "build:exe": "npm run before:exe && electron-builder --win --ia32",
-    "build:exe:dir": "npm run before:exe && electron-builder --win --ia32 --dir",
+    "build:exe": "npm run build && npm run tsc:electron && electron-builder --win --ia32",
+    "build:exe:dir": "npm run build && npm run tsc:electron && electron-builder --win --ia32 --dir",
     "server": "npm run build && vite preview --host",
     "server:app": "npm run before:app && cd ./cordova/ && cordova run android --buildConfig=./www/dist/res/android/build_config/build.json --release",
-    "server:exe": "npm run before:exe && chcp 65001 && electron . prod",
+    "server:exe": "npm run build && npm run tsc:electron && chcp 65001 && electron . prod",
     "lint": "npm run prettier && npm run eslint",
     "eslint": "eslint ./ --fix --ext .ts,.tsx,.js,.jsx,.vue",
     "prettier": "prettier --write ./**/*.{ts,tsx,js,jsx,vue,html,css,scss,less}",
@@ -68,8 +70,8 @@
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "@vitejs/plugin-react": "^2.0.1",
-    "electron": "^18.0.4",
-    "electron-builder": "^23.0.3",
+    "electron": "^18.3.8",
+    "electron-builder": "^23.3.3",
     "electron-icon-builder": "^2.0.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -82,6 +84,7 @@
     "js-xcmd": "^1.3.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
+    "nodemon": "^2.0.19",
     "prettier": "^2.6.2",
     "terser": "^5.14.2",
     "vite": "^3.0.8"
@@ -93,12 +96,12 @@
     "productName": "React-View",
     "appId": "com.react.view",
     "asar": false,
-    "copyright": "Leo He © 2022",
+    "copyright": "Copyright © 2022 ${author}",
     "files": [
       "dist/**/*"
     ],
     "directories": {
-      "output": "build_exe"
+      "output": "build_exe/${version}"
     },
     "win": {
       "target": [
@@ -108,13 +111,14 @@
     },
     "nsis": {
       "language": 2052,
-      "artifactName": "react_view.exe",
+      "artifactName": "${productName}-Windows-${version}-Setup.${ext}",
       "allowElevation": true,
       "installerHeader": "dist/res/electron/icons/icon.ico",
       "installerHeaderIcon": "dist/res/electron/icons/icon.ico",
       "uninstallerIcon": "dist/res/electron/icons/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": true,
       "allowToChangeInstallationDirectory": true,
       "oneClick": false
     }
