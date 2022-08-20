@@ -2,13 +2,13 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-18 12:41:46
+ * @LastEditTime: 2022-08-20 18:00:32
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron\main\main.ts
  */
 // https://vitejs.cn/guide/env-and-mode.html#env-files
 
-import path from 'path';
+import * as path from 'path';
 import { app, BrowserWindow, globalShortcut } from 'electron';
 // eslint-disable-next-line no-undef
 const mode = process.argv[2];
@@ -43,6 +43,7 @@ const createWindow = () => {
     },
   });
   if (mode === 'dev') {
+    // !app.isPackaged
     mainWindow.loadURL('http://localhost:1998/');
     mainWindow.webContents.openDevTools();
   } else {

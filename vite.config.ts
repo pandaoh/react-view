@@ -2,11 +2,11 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-17 10:58:43
+ * @LastEditTime: 2022-08-20 18:03:33
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
-import path from 'path';
+import * as path from 'path';
 import { defineConfig } from 'vite';
 import reactPlugin from '@vitejs/plugin-react';
 // cjs2esmVitePlugin 可以将 cjs 文件转换为 esm 文件
@@ -14,11 +14,28 @@ import reactPlugin from '@vitejs/plugin-react';
 // https://github.com/vitejs/awesome-vite // 好用的 vite 插件
 
 // eslint-disable-next-line no-undef
-const getPath = _path => path.resolve(__dirname, _path);
+const getPath = _path => path.resolve(__dirname, _path); // 若有警告可以关闭全局的 ts any 类型检查。
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   console.table({ command, mode });
+  // 如果不想使用 nodemon 来实现 electron 热监听，可以使用 vite-plugin-electron 插件。
+  // 通过 vite -m electron 启动 electron 应用，使用 mode 来判断是否使用 electron 插件。
+  // import electronPlugin from 'vite-plugin-electron';
+  // const pluginsConfig = [reactPlugin()];
+  // if (mode === 'electron') {
+  //   pluginsConfig.push(
+  //     electronPlugin({
+  //       main: {
+  //         entry: 'electron/main/main.ts',
+  //       },
+  //       preload: {
+  //         // eslint-disable-next-line no-undef
+  //         input: path.join(__dirname, 'electron/preload/preload.ts'),
+  //       },
+  //     }),
+  //   );
+  // }
   return {
     root: getPath('./'), // './'
     base: './', // https://vitejs.cn/config/#base 公共基础路径

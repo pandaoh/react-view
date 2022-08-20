@@ -9,6 +9,7 @@
     "before:app": "vite build --outDir ./cordova/www/dist && cd ./cordova/ && cordova platform remove android && cordova platform add android && cordova plugin add cordova-plugin-splashscreen && cordova plugin add cordova-plugin-apkupdater && cordova plugin add cordova-plugin-autostart@2.3.0 && cordova plugin add cordova-custom-config && cordova plugin add cordova-plugin-x-toast && cordova plugin add cordova-plugin-statusbar",
     "dev": "vite",
     "dev:app": "npm run before:app && cd ./cordova/ && cordova run android",
+    "tsc:exe": "tsc ./electron/main/main.ts --outDir dist/electron/main/ | tsc ./electron/preload/preload.ts --outDir dist/ --esModuleInterop true --resolveJsonModule true",
     "tsc:electron": "tsc -p tsconfig.electron.json",
     "dev:electron": "npm run tsc:electron && electron . dev",
     "watch:electron": "nodemon --watch electron/** --ext ts,js,tsx,jsx,json --exec npm run dev:electron",
