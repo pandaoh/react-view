@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-13 11:18:13
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-15 14:44:52
+ * @LastEditTime: 2022-08-23 17:49:48
  * @Description: 全局请求工具
  * @FilePath: \react-view\src\tools\api\xhttp.ts
  */
@@ -36,7 +36,7 @@ const $http = XHttp.create(
     errorHandler: (error: any) => {
       message.error('请求失败');
       // 统一错误处理
-      // if (!XHttp.isCancel(error) && !error.message?.includes('custom-error')) {
+      // if (!XHttp.isCancel(error) && !error.message?.includes('custom-error') && !error.message?.includes('timeout')) {
       //   notification.error({
       //     message: `${error.status}-${error.statusText}`,
       //     description: `发生错误了 ${error.data?.msg ?? error?.data?.message ?? '未知错误'}`,

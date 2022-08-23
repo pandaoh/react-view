@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-20 18:03:33
+ * @LastEditTime: 2022-08-23 17:53:05
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
@@ -37,6 +37,7 @@ export default defineConfig(({ command, mode }) => {
   //   );
   // }
   return {
+    // envPrefix: 'VITE_', // 以 envPrefix 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。 default: 'VITE_'
     root: getPath('./'), // './'
     base: './', // https://vitejs.cn/config/#base 公共基础路径
     build: {
