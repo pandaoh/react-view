@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:36:17
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-20 15:10:11
+ * @LastEditTime: 2022-08-24 16:19:27
  * @Description: 路由配置
  * @FilePath: \react-view\src\router\_config.ts
  */
@@ -22,7 +22,7 @@ const routes = [
     path: '/test/:paramsName',
     // this.props.match.params.paramsName
     name: 'Test',
-    exact: true,
+    exact: false, // 有子路由需设置为 false
     component: lazy(() => import('@pages/Home')),
     meta: {
       title: 'test',

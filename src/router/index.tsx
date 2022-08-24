@@ -2,19 +2,22 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:41:35
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-15 14:58:51
- * @Description: 路由组件入口
+ * @LastEditTime: 2022-08-24 16:20:20
+ * @Description: 主路由组件入口
  * @FilePath: \react-view\src\router\index.tsx
  */
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import routes from './_config'; // 路由列表，有其他的路由列表页面可以继续引入
 import RouterView from './RouterView'; // 封装好的 Router
 import { selectors } from '@/redux';
 import loadingImg from '@/static/img/loading.gif';
 
-const AppRouter = (props: any) => {
+type AppRouterProps = {
+  routes: any;
+};
+
+const AppRouter: React.FC<AppRouterProps> = (props: any) => {
   return (
     <HashRouter>
       <div
@@ -40,7 +43,7 @@ const AppRouter = (props: any) => {
         <img style={{ width: '10%' }} src={loadingImg} title="Loading" alt="Loading"></img>
         {props.msg}
       </div>
-      <RouterView routes={routes} />
+      <RouterView routes={props.routes} defaultRoute="/" />
     </HashRouter>
   );
 };

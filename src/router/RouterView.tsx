@@ -2,11 +2,11 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:42:30
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-15 14:48:12
- * @Description: 动态路由渲染组件
+ * @LastEditTime: 2022-08-24 16:20:23
+ * @Description: 路由渲染组件
  * @FilePath: \react-view\src\router\RouterView.tsx
  */
-import { Route, Switch } from 'react-router-dom'; // 引入 react-router-dom
+import { Redirect, Route, Switch } from 'react-router-dom'; // 引入 react-router-dom
 import React, { Suspense } from 'react'; // Suspense 配合前面的 laze() 使用，不加上会报错
 import AuthRouteDom from './AuthRouteDom';
 import loadingGif from '@/static/loading.gif';
@@ -18,18 +18,23 @@ const RouterView = (props: any) => {
       fallback={<img style={{ margin: 'auto', width: '10%' }} src={loadingGif} title="Loading" alt="Loading" />}
     >
       <Switch>
-        {routes.map((item: any, index: number) => {
-          return (
+        {routes.map((route: any) => {
+          return route.redirect ? (
+            <Route key={route.path} exact={route.exact} path={route.path}>
+              <Redirect to={route.redirect} />
+            </Route>
+          ) : (
             <Route
-              key={index}
-              exact={item.exact}
-              path={item.path}
+              key={route.path}
+              exact={route.exact && !route.routes?.length}
+              path={route.path}
               render={routeProps => {
-                return <AuthRouteDom {...item} {...routeProps} />;
+                return <AuthRouteDom {...route} {...routeProps} />;
               }}
             />
           );
         })}
+        {props.defaultRoute && <Redirect to={props.defaultRoute} />}
       </Switch>
     </Suspense>
   );

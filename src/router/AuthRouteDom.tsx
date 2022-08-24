@@ -2,8 +2,8 @@
  * @Author: HxB
  * @Date: 2022-04-20 11:24:12
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-04-27 14:58:26
- * @Description: 路由守卫
+ * @LastEditTime: 2022-08-24 16:20:39
+ * @Description: 路由守卫组件
  * @FilePath: \react-view\src\router\AuthRouteDom.tsx
  */
 import React, { Component } from 'react';
