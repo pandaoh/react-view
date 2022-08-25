@@ -7,18 +7,34 @@
  * @FilePath: \react-view\src\redux\index.ts
  */
 import { configureStore } from '@reduxjs/toolkit';
-import loadingReducer, { loadingSelector, loadingActions } from './modules/loading';
+import loading from './modules/loading';
 
 export default configureStore({
   reducer: {
-    loading: loadingReducer,
+    ...loading.reducers,
   },
 });
 
 export const selectors = {
-  loading: loadingSelector,
+  ...loading.selectors,
 };
 
 export const actions = {
-  loading: loadingActions,
+  ...loading.actions,
 };
+
+// import loadingReducer, { loadingSelector, loadingActions } from './modules/loading';
+
+// export default configureStore({
+//   reducer: {
+//     loading: loadingReducer,
+//   },
+// });
+
+// export const selectors = {
+//   loading: loadingSelector,
+// };
+
+// export const actions = {
+//   loading: loadingActions,
+// };
