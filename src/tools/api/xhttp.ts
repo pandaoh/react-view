@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-13 11:18:13
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-23 17:49:48
+ * @LastEditTime: 2022-09-02 18:30:01
  * @Description: 全局请求工具
  * @FilePath: \react-view\src\tools\api\xhttp.ts
  */
@@ -15,6 +15,7 @@ const $http = XHttp.create(
   {
     timeout: 10000, // 超时时间 default: 30000
     cancelDuplicatedRequest: true, // 是否取消重复请求 default: true
+    rejectErrorPromise: false,
     // retryConfig: {
     //   // 重试配置
     //   retry: 3, // 次数
@@ -28,12 +29,12 @@ const $http = XHttp.create(
     responseHandler: (response: any) => {
       message.success('请求成功');
       // 可在此处统一处理返回数据提示
-      console.log('responseHandler', response);
+      console.log('responseHandler', response, response.config);
       // if (response.data.code != 0) {
       //   message.error(response.data.msg);
       // }
     },
-    errorHandler: (error: any) => {
+    errorHandler: (error: any, requestConfig: any) => {
       message.error('请求失败');
       // 统一错误处理
       // if (!XHttp.isCancel(error) && !error.message?.includes('custom-error') && !error.message?.includes('timeout')) {
@@ -44,14 +45,17 @@ const $http = XHttp.create(
       // }
       // return Promise.reject(error); // 是否传递错误到外层 不传递则可以免去每次请求去自定义错误处理
       console.log('errorHandler', error); // 错误处理 可自行打印日志 log
+      if (requestConfig.rejectErrorPromise) {
+        return Promise.reject(error);
+      }
     },
     setRequestHeaders: (config: any) => {
       // 设置请求头 可以添加 token 等，也可以通过 $http.setAuthToken 来处理
       return config; // 返回配置对象，可修改请求头。必须返回一个请求头对象，否则会抛出错误。
     },
-    requestFinally: () => {
+    requestFinally: (requestConfig: any) => {
       store.dispatch(actions.loading.stopLoading());
-      console.log('requestFinally Hooks'); // 请求完成时的回调，无论结果如何。
+      console.log('requestFinally Hooks', requestConfig); // 请求完成时的回调，无论结果如何。
     },
   },
   // axios 配置

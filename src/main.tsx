@@ -2,12 +2,13 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-24 16:20:50
+ * @LastEditTime: 2022-09-02 18:29:06
  * @Description: 主页面
  * @FilePath: \react-view\src\main.tsx
  */
 import '@tools/css/reset.css';
 import 'antd/dist/antd.css';
+import '@tools/css/global.less';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
