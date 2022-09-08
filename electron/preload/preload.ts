@@ -2,13 +2,13 @@
  * @Author: HxB
  * @Date: 2022-08-18 10:34:52
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-20 18:00:20
+ * @LastEditTime: 2022-09-08 09:30:55
  * @Description: preload
  * @FilePath: \react-view\electron\preload\preload.ts
  */
 import { contextBridge, ipcRenderer, ipcMain } from 'electron';
 import pkg from '../../package.json';
-// 引入了 json 文件，tsc 编译时会默认带上原路径，所以不用写详细目标路径。
+// 引入了 json 文件，tsc 编译时会默认带上原路径，所以 pkg-scripts 里不用写详细目标路径。
 
 window.addEventListener('DOMContentLoaded', () => {
   console.log('HTML DOMContentLoaded');
