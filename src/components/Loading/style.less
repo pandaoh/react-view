@@ -1,0 +1,247 @@
+// 样式隔离，不推荐 css module 以及直接 import 普通 css 文件。
+[data-component='Loading'] {
+  &.loading-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+  }
+
+  .ghost {
+    margin-top: 150px;
+    position: relative;
+    width: 160px;
+    height: 200px;
+  }
+
+  .body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 80px;
+    border-top-left-radius: 80px;
+    background-color: #fff;
+    animation: float 4s ease infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      top: 0px;
+    }
+
+    40% {
+      top: -40px;
+    }
+  }
+
+  .face {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 67px;
+    left: 40px;
+    width: 72px;
+    height: 41px;
+  }
+
+  .eye {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 100%;
+    animation: eyes 4s ease infinite;
+  }
+
+  .eye.left {
+    margin-right: 32px;
+  }
+
+  .smile {
+    width: 32px;
+    height: 16px;
+    background-color: #000;
+    margin-top: 6px;
+    margin-left: 20px;
+    border-bottom-left-radius: 16px 12px;
+    border-bottom-right-radius: 16px 12px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    animation: smile 4s ease infinite;
+  }
+
+  .rosy {
+    position: absolute;
+    top: 28px;
+    width: 22px;
+    height: 8px;
+    background-color: #ffaa9e;
+    border-radius: 100%;
+  }
+
+  .rosy.left {
+    left: -6px;
+    transform: rotate(-8deg);
+  }
+
+  .rosy.right {
+    right: -6px;
+    transform: rotate(8deg);
+  }
+
+  .arm {
+    position: absolute;
+    top: 136px;
+    width: 60px;
+    height: 40px;
+    background-color: #fff;
+  }
+
+  .arm.left {
+    left: -4px;
+    border-radius: 60% 100%;
+    animation: arms-left 4s ease infinite;
+  }
+
+  .arm.right {
+    right: -65px;
+    border-radius: 100% 60%;
+    animation: arms-right 4s ease infinite;
+  }
+
+  @keyframes eyes {
+
+    0%,
+    100% {
+      height: 15px;
+    }
+
+    40% {
+      height: 25px;
+    }
+  }
+
+  @keyframes smile {
+
+    0%,
+    100% {
+      height: 16px;
+    }
+
+    40% {
+      height: 64px;
+    }
+  }
+
+  @keyframes arms-left {
+
+    0%,
+    100% {
+      transform: translate(-50%, -50%) rotate(50deg);
+    }
+
+    40% {
+      transform: translate(-50%, -50%) rotate(40deg);
+    }
+  }
+
+  @keyframes arms-right {
+
+    0%,
+    100% {
+      transform: translate(-50%, -50%) rotate(-50deg);
+    }
+
+    40% {
+      transform: translate(-50%, -50%) rotate(-40deg);
+    }
+  }
+
+  .bottom {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: -1px;
+  }
+
+  .bottom div {
+    flex-grow: 1;
+    position: relative;
+    top: -14px;
+    height: 28px;
+    border-radius: 100%;
+    background-color: #fff;
+  }
+
+  .bottom div:nth-child(2n) {
+    top: -10px;
+    margin: 0 -2px;
+    background-color: transparent;
+    border-top: 10px solid #fff;
+  }
+
+  .shadow {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    width: 200px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: gray;
+    animation: shadow 4s ease infinite;
+  }
+
+  @keyframes shadow {
+
+    0%,
+    100% {
+      transform: translateX(-50%) scale(1);
+    }
+
+    40% {
+      transform: translateX(-50%) scale(0.5);
+    }
+  }
+
+  .loader {
+    margin-top: 75px;
+    width: 160px;
+    position: relative;
+    perspective: 200px;
+  }
+
+  .loader::before,
+  .loader::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    position: absolute;
+    animation: jumping 0.5s ease infinite alternate;
+  }
+
+  .loader::before {
+    left: 0;
+  }
+
+  .loader::after {
+    right: 0;
+    animation-delay: 0.15s;
+  }
+
+  @keyframes jumping {
+    0% {
+      transform: scale(1) translateY(0) rotateX(0);
+      box-shadow: 0 0 0 transparent;
+    }
+
+    100% {
+      background-color: #fff;
+      transform: scale(1.2) translateY(-55px) rotateX(45deg);
+      box-shadow: 0 55px 100px #fff;
+    }
+  }
+}

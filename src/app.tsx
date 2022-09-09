@@ -2,14 +2,14 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-24 16:17:59
+ * @LastEditTime: 2022-09-09 15:29:22
  * @Description: 主组件
  * @FilePath: \react-view\src\app.tsx
  */
 import React, { Component } from 'react';
 import { CLIENT_RATIO } from './global_config';
 import AppRouter from './router';
-import loadingGif from '@/static/loading.gif';
+import Loading from '@/components/Loading';
 
 class App extends Component<any, { loading: boolean; clientRatio: number }> {
   constructor(props: any) {
@@ -73,7 +73,7 @@ class App extends Component<any, { loading: boolean; clientRatio: number }> {
       return <AppRouter routes={this.props.routes} />;
     }
 
-    return <img style={{ margin: 'auto', width: '10%' }} src={loadingGif} title="Loading" alt="Loading" />;
+    return <Loading />;
   }
 }
 

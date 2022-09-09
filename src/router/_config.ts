@@ -2,10 +2,11 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:36:17
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-24 16:19:27
+ * @LastEditTime: 2022-09-09 15:30:13
  * @Description: 路由配置
  * @FilePath: \react-view\src\router\_config.ts
  */
+import { sleep } from 'js-xxx';
 import { lazy } from 'react';
 
 const routes = [
@@ -65,7 +66,10 @@ const routes = [
   {
     path: null,
     name: '404',
-    component: lazy(() => import('@pages/404')),
+    component: lazy(async () => {
+      await sleep(3000);
+      return import('@/pages/404');
+    }),
     meta: {
       title: '404',
     },

@@ -2,21 +2,19 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:42:30
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-24 16:20:23
+ * @LastEditTime: 2022-09-09 15:28:49
  * @Description: 路由渲染组件
  * @FilePath: \react-view\src\router\RouterView.tsx
  */
 import { Redirect, Route, Switch } from 'react-router-dom'; // 引入 react-router-dom
 import React, { Suspense } from 'react'; // Suspense 配合前面的 laze() 使用，不加上会报错
 import AuthRouteDom from './AuthRouteDom';
-import loadingGif from '@/static/loading.gif';
+import Loading from '@/components/Loading';
 
 const RouterView = (props: any) => {
   const { routes } = props;
   return (
-    <Suspense
-      fallback={<img style={{ margin: 'auto', width: '10%' }} src={loadingGif} title="Loading" alt="Loading" />}
-    >
+    <Suspense fallback={<Loading />}>
       <Switch>
         {routes.map((route: any) => {
           return route.redirect ? (
