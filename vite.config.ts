@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-23 17:53:05
+ * @LastEditTime: 2022-09-13 11:22:30
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
@@ -71,6 +71,7 @@ export default defineConfig(({ command, mode }) => {
         '@components': getPath('src/components'),
         '@pages': getPath('src/pages'),
         '@tools': getPath('src/tools'),
+        '@types': getPath('src/types'), // 好像 @types 有冲突
         '@assets': getPath('src/assets'),
         '@services': getPath('src/services'),
       },

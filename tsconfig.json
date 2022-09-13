@@ -78,6 +78,7 @@
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@tools/*": ["./src/tools/*"],
+      "@types/*": ["./src/types/*"],
       "@assets/*": ["./src/assets/*"],
       "@services/*": ["./src/services/*"]
     }

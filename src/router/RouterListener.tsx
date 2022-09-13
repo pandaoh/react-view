@@ -2,8 +2,8 @@
  * @Author: HxB
  * @Date: 2022-08-15 11:24:12
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-30 16:05:52
- * @Description: 路由守卫子组件
+ * @LastEditTime: 2022-09-13 11:13:47
+ * @Description: 路由监听组件
  * @FilePath: \react-view\src\router\RouterListener.tsx
  */
 import React, { Component } from 'react';

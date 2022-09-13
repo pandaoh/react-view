@@ -2,14 +2,15 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:36:17
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-09-13 11:03:27
+ * @LastEditTime: 2022-09-13 11:22:18
  * @Description: 路由配置
  * @FilePath: \react-view\src\router\_config.ts
  */
 import { sleep } from 'js-xxx';
 import { lazy } from 'react';
+import { RouteConfig } from '@/types/router';
 
-const routes = [
+const routes: RouteConfig[] = [
   {
     path: '/',
     exact: true,
