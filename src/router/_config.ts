@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:36:17
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-09-09 15:30:13
+ * @LastEditTime: 2022-09-13 11:03:27
  * @Description: 路由配置
  * @FilePath: \react-view\src\router\_config.ts
  */
@@ -48,6 +48,7 @@ const routes = [
     path: '/settings',
     name: 'Settings',
     roles: ['admin'],
+    keepAlive: true,
     component: lazy(() => import('@pages/Settings')),
     meta: {
       title: '配置页面',
@@ -64,7 +65,7 @@ const routes = [
     exact: true,
   },
   {
-    path: null,
+    path: '*', // 不设置 null，兼容一些第三方组件（例如缓存组件）。
     name: '404',
     component: lazy(async () => {
       await sleep(3000);

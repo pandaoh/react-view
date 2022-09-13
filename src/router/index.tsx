@@ -2,13 +2,14 @@
  * @Author: HxB
  * @Date: 2022-04-13 10:41:35
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-30 16:05:51
+ * @LastEditTime: 2022-09-13 10:18:31
  * @Description: 主路由组件入口
  * @FilePath: \react-view\src\router\index.tsx
  */
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { AliveScope } from 'react-activation';
 import RouterView from './RouterView'; // 封装好的 Router
 import RouterListener from './RouterListener';
 import { selectors } from '@/redux';
@@ -44,7 +45,9 @@ const AppRouter: React.FC<AppRouterProps> = (props: any) => {
         <img style={{ width: '10%' }} src={loadingImg} title="Loading" alt="Loading"></img>
         {props.msg}
       </div>
-      <RouterView routes={props.routes} defaultRoute="/" />
+      <AliveScope>
+        <RouterView routes={props.routes} defaultRoute="/" />
+      </AliveScope>
       <RouterListener />
     </HashRouter>
   );
