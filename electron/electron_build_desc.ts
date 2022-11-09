@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-18 14:32:43
+ * @LastEditTime: 2022-11-09 15:52:58
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron\electron_build_desc.ts
  */
@@ -86,6 +86,7 @@ const builder: any = {
 /* -------------------------------------------------- */
 
 // 使用原生 js 开发 electron 应用，我们可以添加 preload.js 提供一些 api 供原生使用。
+// 进程间通信教学 https://www.electronjs.org/zh/docs/latest/tutorial/ipc
 // window.addEventListener('DOMContentLoaded', () => {
 //   console.log('My HTML DOMContentLoaded.');
 // });
@@ -93,18 +94,22 @@ const builder: any = {
 // // 在 main 与 html 之间通信
 // const { contextBridge, ipcRenderer } = require('electron');
 // contextBridge.exposeInMainWorld('myIpc', {
-//   // From render to main.
+//   // From render to main. 渲染器主动与主进程通信
 //   send: (channel, args) => {
-//     return ipcRenderer.sendSync(channel, args);
+//     return ipcRenderer.sendSync(channel, args); // ipcRenderer.sendSync API 向主进程发送消息，并 同步 等待响应。(当主进程有响应时) [sendSync(channel, 'ping') => ipcMain.on ... event.returnValue = 'pong']
+//     // const result = ipcRenderer.sendSync(channel, 'ping'); // 'pong'
 //   },
-//   // From main to render.
+//   // From main to render. 主进程主动与渲染器进程通信
 //   // listener 为自定义的消息处理函数，原型在 renderer.js(custom) 中。
 //   receive: (channel, listener) => {
-//     ipcRenderer.on(channel, (event, args) => listener(args));
+//     ipcRenderer.on(channel, (event, args) => listener(args)); // main.js [send(channel, 'ping') => ipcMain.on ... event.reply(channel, 'pong')] or [mainWindow.webContents.send(channel, 'pong')]
+//     // Ps: const webContents = event.sender; const targetWin = BrowserWindow.fromWebContents(webContents); targetWin.setTitle(title);
+//     // And So: event.reply == event.sender.send
 //   },
-//   // From render to main and back again.
+//   // From render to main and back again. 双向通信 demo，上面也有例子。
 //   invoke: (channel, args) => {
-//     return ipcRenderer.invoke(channel, args);
+//     return ipcRenderer.invoke(channel, args); //(不推荐) main.js ipcMain.handle(channel, () => 'test value'); // html let result = await window.myIpc.invoke(channel);
+//     //(推荐) main.js ipcRenderer.sendSync/send(channel, 'ping') => ipcMain.on(channel, (event, args) => event.returnValue/reply...);
 //   },
 //   exit: () => {
 //     console.log('destroy');
@@ -112,3 +117,7 @@ const builder: any = {
 //   },
 //   getVersion: () => require('./package.json')['version'],
 // });
+
+// const baseDir = path.dirname(process.execPath); // 获取运行目录
+// const baseRenderDir = path.join(baseDir, 'resources/app');
+// const bgPng = path.join(baseRenderDir, 'source', 'bg.png');
