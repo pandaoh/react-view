@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-20 15:42:27
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-20 18:00:32
+ * @LastEditTime: 2022-11-09 16:19:34
  * @Description: electron 打包与启动文件
  * @FilePath: \react-view\electron\main\main.ts
  */
@@ -23,7 +23,9 @@ const createWindow = () => {
     // icon: path.join(__dirname, 'dist/res/electron/icons/icon.ico'),
     autoHideMenuBar: true, // 隐藏菜单
     alwaysOnTop: true, // 总在最前
-    resizable: false, // 不可改变大小
+    resizable: false, // 能否改变大小，false 可能导致 win.restore() 改变窗口大小失效。
+    // transparent: false, // 透明，true 可能导致 win.restore() 改变窗口大小失效。
+    // movable: true, // 能否移动窗口，false 可能导致 win.restore() 改变窗口大小失效。
     // fullscreen: true, // 默认全屏
     // minWidth: 1680, // min width
     // minHeight: 945, // min height
