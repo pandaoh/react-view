@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-21 14:06:45
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-11-09 15:52:58
+ * @LastEditTime: 2022-11-14 15:42:12
  * @Description: electron-builder 打包配置项介绍
  * @FilePath: \react-view\electron\electron_build_desc.ts
  */
@@ -118,6 +118,96 @@ const builder: any = {
 //   getVersion: () => require('./package.json')['version'],
 // });
 
-// const baseDir = path.dirname(process.execPath); // 获取运行目录
+// const baseDir = path.dirname(process.execPath); // 获取运行目录 app.getAppPath()
 // const baseRenderDir = path.join(baseDir, 'resources/app');
 // const bgPng = path.join(baseRenderDir, 'source', 'bg.png');
+
+// ========================= ELECTRON PRINT PDF FILE START =========================
+// https://www.jianshu.com/p/835da0738078
+// https://www.sumatrapdfreader.org/docs/Command-line-arguments
+
+// print pdf render page code
+// const blob = new Blob([data], {
+//   // data 为文件流
+//   type: 'application/pdf;charset=utf-8',
+// });
+// // const pdfUrl = window.webkitURL.createObjectURL(blob) + '#toolbar=0'; // 禁用工具栏
+// const reader = new FileReader();
+// reader.readAsDataURL(blob);
+// reader.addEventListener('loadend', () => {
+//   // 通知主进程打印
+//   electron.ipcRenderer.send('printPDF', {
+//     baseCode: Buffer.from(reader.result.split('base64,')[1], 'base64'),
+//     printMachine: 'Printer Name',
+//   });
+// });
+
+// print pdf main code
+// ipcMain.on('printPDF', (e, arg) => {
+//   const cp = require('child_process');
+//   const path = require('path');
+//   const fs = require('fs');
+
+//   let dir = path.join(app.getAppPath(), process.env.NODE_ENV === 'development' ? './src/static' : './static');
+//   let pdfUrl = dir + '/temp/print_content.pdf';
+//   let cmdPath = dir + '/temp';
+
+//   const writeFile = () => {
+//     fs.writeFile(pdfUrl, arg.baseCode, { encoding: 'utf8' }, err => {
+//       // 失败
+//       if (err) {
+//         e.reply('printFailed', err); // ipcRenderer.on
+//       } else {
+//         switch (process.platform) {
+//           case 'darwin':
+//           case 'linux':
+//             cp.exec(
+//               `SumatraPDF.exe -print-to "${arg.printMachine}"  "${pdfUrl}"`, // 注意此处 pdfUrl 是否支持绝对路径，不支持则使用 './print_content.pdf'。
+//               {
+//                 windowsHide: true,
+//                 cwd: cmdPath,
+//               },
+//               error => {
+//                 if (error) {
+//                   throw error;
+//                 }
+//               },
+//             );
+//             break;
+//           case 'win32':
+//             cp.exec(
+//               `SumatraPDF_32.exe -print-to "${arg.printMachine}"  "${pdfUrl}"`, // 注意此处 pdfUrl 是否支持绝对路径，不支持则使用 './print_content.pdf'。
+//               {
+//                 windowsHide: true,
+//                 cwd: cmdPath,
+//               },
+//               error => {
+//                 fs.unlink(pdfUrl, err => {
+//                   console.log(err);
+//                 });
+//                 if (error) {
+//                   throw error;
+//                 }
+//               },
+//             );
+//             break;
+//           default:
+//             throw new Error('Platform not supported.');
+//         }
+//       }
+//     });
+//   };
+
+//   if (fs.existsSync(dir)) {
+//     writeFile();
+//   } else {
+//     fs.mkdir(dir, { recursive: true }, err => {
+//       if (err) {
+//         throw err;
+//       } else {
+//         writeFile();
+//       }
+//     });
+//   }
+// });
+// ========================= ELECTRON PRINT PDF FILE END =========================
