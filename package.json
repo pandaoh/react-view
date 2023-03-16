@@ -17,6 +17,9 @@
     "build": "vite build",
     "build:app": "npm run before:app && cd ./cordova/ && cordova build android --buildConfig=./www/dist/res/android/build_config/build.json --release",
     "build:exe": "npm run build && npm run tsc:electron && electron-builder --win --ia32",
+    "build:linux:info": "注意 author 写法；需有 homepage；linux 配置里面需 category；",
+    "build:linux-arm32": "electron-builder --linux --armv7l",
+    "build:linux-arm64": "electron-builder --linux --arm64",
     "build:exe:dir": "npm run build && npm run tsc:electron && electron-builder --win --ia32 --dir",
     "server": "npm run build && vite preview --host",
     "server:app": "npm run before:app && cd ./cordova/ && cordova run android --buildConfig=./www/dist/res/android/build_config/build.json --release",
@@ -91,7 +94,7 @@
     "terser": "^5.14.2",
     "vite": "^3.0.8"
   },
-  "author": "leo he",
+  "author": "leo, Inc <hxbpandaoh@163.com>",
   "email": "hxbpandaoh@163.com",
   "blog": "http://a.biugle.cn",
   "build": {
@@ -123,6 +126,13 @@
       "deleteAppDataOnUninstall": true,
       "allowToChangeInstallationDirectory": true,
       "oneClick": false
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "icon": "dist/res/electron/icons",
+      "category": "Development"
     }
   },
   "license": "MIT",
