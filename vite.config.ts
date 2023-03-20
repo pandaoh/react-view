@@ -2,19 +2,20 @@
  * @Author: HxB
  * @Date: 2022-04-12 16:53:31
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-09-13 11:22:30
+ * @LastEditTime: 2023-03-20 13:40:59
  * @Description: Vite 配置文件
  * @FilePath: \react-view\vite.config.ts
  */
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import reactPlugin from '@vitejs/plugin-react';
+import eslint from 'vite-plugin-eslint';
 // cjs2esmVitePlugin 可以将 cjs 文件转换为 esm 文件
 // https://github.com/WarrenJones/vite-plugin-require-transform // 支持 require 加载 还有 vite-plugin-require 也支持
 // https://github.com/vitejs/awesome-vite // 好用的 vite 插件
 
 // eslint-disable-next-line no-undef
-const getPath = _path => path.resolve(__dirname, _path); // 若有警告可以关闭全局的 ts any 类型检查。
+const getPath = (_path) => path.resolve(__dirname, _path); // 若有警告可以关闭全局的 ts any 类型检查。
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -89,7 +90,7 @@ export default defineConfig(({ command, mode }) => {
         '^/api': {
           target: 'http://192.168.120.88', // 代理接口
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '/api/test/'), // 替换路径 [/api/users => http://192.168.120.88/api/test/users]
+          rewrite: (path) => path.replace(/^\/api/, '/api/test/'), // 替换路径 [/api/users => http://192.168.120.88/api/test/users]
         },
         '^/upload': {
           target: 'http://a.biugle.cn', // 代理接口
@@ -117,6 +118,11 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-    plugins: [reactPlugin()],
+    plugins: [
+      eslint({
+        fix: true,
+      }),
+      reactPlugin(),
+    ],
   };
 });

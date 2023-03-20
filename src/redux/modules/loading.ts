@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-07-15 10:48:59
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-25 10:56:16
+ * @LastEditTime: 2023-03-20 13:42:49
  * @Description: redux loading module
  * @FilePath: \react-view\src\redux\modules\loading.ts
  */
@@ -70,7 +70,7 @@ export const loadingSlice = createSlice({
 
 const LoadingReducers = loadingSlice.reducer; // store state
 const LoadingActions = loadingSlice.actions; // set state
-const LoadingSelectors = state => state.loading; // get state
+const LoadingSelectors = (state) => state.loading; // get state
 
 export default {
   reducers: {

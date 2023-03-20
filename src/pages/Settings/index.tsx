@@ -34,7 +34,7 @@ const Settings = (props: any) => {
       <Input></Input>
       <hr />
       <Test linkList={['/', '/404', '/test/params']} />
-      {cachingNodes.map(node => (
+      {cachingNodes.map((node) => (
         <Button
           key={node.name}
           style={{ margin: '5px auto', display: 'block' }}

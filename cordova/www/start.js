@@ -30,7 +30,7 @@
 
 document.addEventListener(
   'backbutton',
-  e => {
+  (e) => {
     window.$toast('禁止退出应用');
     e.preventDefault();
     e.stopPropagation();

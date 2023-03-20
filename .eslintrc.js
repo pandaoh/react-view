@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-15 14:29:54
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-08-18 10:36:08
+ * @LastEditTime: 2023-03-20 13:37:51
  * @Description: eslint 配置文件
  * @FilePath: \react-view\.eslintrc.js
  */
@@ -20,21 +20,36 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'spellcheck', 'import', 'zob'],
+  plugins: ['prettier', 'react', '@typescript-eslint', 'spellcheck', 'import', 'zob'],
   rules: {
+    'zob/comment': 'error', // 中英文空格间距 找英文符号正则 ([\u4e00-\u9fa5]\s*[!@#$%^&*_+=;:'"{\[\]},.\/\\`\(\)])
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'no-useless-escape': 'warn',
+    'prettier/prettier': [
+      'error',
+      {
+        // trailingComma: 'all',
+        // arrowParens: 'always',
+        // htmlWhitespaceSensitivity: 'ignore',
+      },
+      { usePrettierrc: true },
+    ],
     'no-undef': ['error'],
     'spaced-comment': ['error', 'always'],
     'space-before-blocks': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { max: 5 }],
     'no-mixed-spaces-and-tabs': ['error', false],
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': ['error', 'only-multiline'], // 多行时才可以使用尾随逗号
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     // 'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }], // @typescript-eslint/no-unused-vars
     '@typescript-eslint/no-explicit-any': ['off'],
-    'no-irregular-whitespace': ['error', { skipStrings: true }],
+    'no-irregular-whitespace': [
+      'error',
+      { skipStrings: true, skipComments: true, skipRegExps: true, skipTemplates: true },
+    ], // 禁止使用无效或不规则的空格，字符串等特殊情况跳过。
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-trailing-spaces': ['error', { skipBlankLines: false }],
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
@@ -66,8 +81,24 @@ module.exports = {
           'renderer',
         ],
         skipIfMatch: [
+          // http url
           'http://[^s]*',
-          '^[-\\w]+/[-\\w\\.]+$', // For MIME Types
+          // Auxiliary werbs
+          // see: https://github.com/aotaduy/eslint-plugin-spellcheck/issues/7
+          "(\\s|^)\\w+'t(\\s|$)",
+          // ordinals
+          // https://github.com/aotaduy/eslint-plugin-spellcheck/issues/8
+          '(\\s|^|\\w+)\\d+(st|nd|rd|th)(\\s|[A-Z][a-zA-Z]+|$)',
+          // pre/post prefixes both in kebab case and camel case
+          '(\\s|^)(pre|post)([-\\w]|[A-Z])[a-zA-Z]+(\\s|$)',
+          // xml tags
+          '<(?:/)?[\\w-]+>',
+          // cryptographic octal hashes
+          '^[0-9a-f]{5,999}$',
+          // hex colors
+          '^#[0-9a-f]{3,6}$',
+          // For MIME Types
+          '^[-\\w]+/[-\\w\\.]+$',
         ],
         skipWordIfMatch: [
           '^foobar.*$', // words that begin with foobar will not be checked
@@ -80,7 +111,6 @@ module.exports = {
     'import/newline-after-import': ['error'],
     'import/no-duplicates': ['error'],
     'import/order': ['error', { 'newlines-between': 'never' }],
-    'zob/comment': 'error', // 中英文空格间距 找英文符号正则 ([\u4e00-\u9fa5]\s*[!@#$%^&*_+=;:'"{\[\]},.\/\\`\(\)])
   },
   settings: {
     react: {

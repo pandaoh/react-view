@@ -9,13 +9,13 @@
 import XHttp from '@/tools/api/xhttp';
 
 export function testRequest() {
-  return XHttp.get('/api/users').then(res => {
+  return XHttp.get('/api/users').then((res) => {
     console.log('testRequest', res);
   });
 }
 
 export function testRequestCORS() {
-  return XHttp.get('http://a.biugle.cn').then(res => {
+  return XHttp.get('http://a.biugle.cn').then((res) => {
     console.log('testRequest', res);
   });
 }

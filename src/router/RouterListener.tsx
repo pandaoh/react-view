@@ -19,7 +19,7 @@ class RouterListener extends Component<any, any> {
 
   componentDidMount() {
     // 进入路由的时候监听路由的变化 如果路由发生变化则进行相应操作
-    this._cancelHistoryListener = this.props.history.listen(location => {
+    this._cancelHistoryListener = this.props.history.listen((location) => {
       console.log(location);
       if (this.props.location.pathname !== location.pathname) {
         console.log(`路由发生了变化: 上一条：${this.props.location.pathname} 下一条：${location.pathname}`);

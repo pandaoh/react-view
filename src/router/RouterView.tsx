@@ -26,7 +26,7 @@ const RouterView = (props: any) => {
               key={route.path}
               exact={route.exact && !route.routes?.length}
               path={route.path}
-              render={routeProps => {
+              render={(routeProps) => {
                 return <AuthRouteDom {...route} {...routeProps} />;
               }}
             />
