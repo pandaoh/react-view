@@ -17,6 +17,8 @@
 * Prettier
 * Husky
 
+> 移动端开发可自行引入 `vConsole` 调试
+
 ## Use
 
 ```bash

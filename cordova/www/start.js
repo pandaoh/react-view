@@ -2,7 +2,7 @@
  * @Author: HxB
  * @Date: 2022-04-22 14:23:20
  * @LastEditors: DoubleAm
- * @LastEditTime: 2022-07-20 10:37:44
+ * @LastEditTime: 2023-06-15 14:02:47
  * @Description: cordova 启动
  * @FilePath: \react-view\cordova\www\start.js
  */
@@ -55,6 +55,7 @@ function onDeviceReady() {
   // Hide the splash screen
   navigator.splashscreen.hide();
 
+  // toMainApp();
   checkUpdate();
 }
 
@@ -62,6 +63,8 @@ function checkUpdate() {
   setTimeout(() => {
     const UPDATE_URL = 'https://cdn.biugle.cn/update.json';
     let httpRequest = new XMLHttpRequest();
+    httpRequest.timeout = 10000;
+    httpRequest.withCredentials = true; // 不校验证书
     httpRequest.open('GET', UPDATE_URL, true);
     httpRequest.send();
 
@@ -70,19 +73,19 @@ function checkUpdate() {
       toMainApp();
     };
 
-    httpRequest.ontimeout = function () {
-      console.log(error);
+    httpRequest.ontimeout = function (error) {
+      console.log(error, 'timeout');
       toMainApp();
     };
 
     httpRequest.onreadystatechange = async function () {
       if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-        const jsonText = httpRequest.responseText;
         try {
+          const jsonText = httpRequest.responseText;
           // const responseDemo = {
           //   date: '2022-07-15',
           //   version: '1.0.1',
-          //   remark: '1. 更新内容1\n2. 更新内容2',
+          //   remark: '1. 更新内容 A\n2. 更新内容 B',
           //   downloadUrl: 'https://cdn.biugle.cn/app-debug.apk',
           //   size: 30,
           // };
@@ -108,6 +111,10 @@ function checkUpdate() {
           window.$toast('获取版本信息失败！');
           console.log(error);
         }
+        toMainApp();
+      } else {
+        console.log(httpRequest, 'httpRequest finished');
+        window.$toast('获取版本信息完成');
         toMainApp();
       }
     };
@@ -137,7 +144,7 @@ function checkVersion(targetVersion, currentVersion, testStr = '-rc') {
 }
 
 function toMainApp() {
-  StatusBar.hide();
+  // StatusBar.hide(); // 是否隐藏顶部状态栏
   setTimeout(() => {
     window.location.href = 'dist/index.html';
   }, 1000);
