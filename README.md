@@ -1,3 +1,5 @@
+# 2023.5 更推荐 [web_base](https://github.com/biugle/web_base)
+
 # react-view-cross-platform
 
 > 一个基于 React 的跨平台通用模板(移动/PC/Web)，适用于项目基础框架搭建。
